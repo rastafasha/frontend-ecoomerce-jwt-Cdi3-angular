@@ -1,0 +1,37 @@
+<!-- <div *ngFor="let slider of sliders; let i=index;">
+    <div [ngStyle]="{'background-image': 'url(' + slider.img + ')'}"></div>
+    <div style="background-image: url('http://localhost:8888/proyectos/CI3Server/ursi/server/media/uploads/sliders/56c18653-a0c0-4121-ab1e-149a84b53d72.jpg'); height: 100%;"></div>
+</div> -->
+
+<div id="myCarousel" class="carousel slide ">
+    <!-- Indicators -->
+    <!-- <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    </ol> -->
+
+    <!-- -- Wrapper for Slides -->
+    <div class="carousel-inner " *ngFor="let item of sliders | slice:0:1">
+        <div class="item active banner">
+            <div class="BannPpal1 sli header pagina parallax slide" data-movimiento="10" id="sli2" [ngStyle]="{'background-image': 'url(' + item.img + ')'}">
+                <div class="container tttt">
+                    <div class="sli header texto ttt1 t2 col-xs-12" id="sli1">
+                        <div class="clear"></div>
+                        <div class="texto-banner ">
+                            <div class="col-xs-12 doun">
+                                <h2>{{item.title}}</h2>
+                                <h2>{{item.subtitulo}}</h2>
+                                <h2>{{item.description}}</h2>
+                                <a href="{{item.enlace}}" target="{{item.target}}" class="button btn-success">boton</a>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <a href="#sli3" class="ancla"><div class="mouseicon "></div></a> -->
+    </div>
+
+</div>

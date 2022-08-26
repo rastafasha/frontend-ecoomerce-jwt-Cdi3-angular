@@ -1,0 +1,106 @@
+<!-- Modal -->
+<div *ngFor="let curso of cursos; let i = index">
+    <div class="modal fade" id="{{curso.id}}" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg modal-quickview woocommerce" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="woocommerce-product-gallery">
+                                <div class="main-carousel-product-quick-view">
+                                    <div class="item">
+                                        <img class="img-responsive" src="{{curso.img}}" alt="{{curso.name}} thumbnail" />
+                                    </div>
+                                    <br>
+                                    <hr>
+                                    <br>
+                                    <div class="header-desc">
+                                        <h2 class="product-title">{{curso.name}}</h2>
+                                        <p>{{curso.info_short}}</p>
+                                    </div>
+                                </div>
+                                <!-- <div class="thumbnail-carousel-product-quickview">
+                                  <div class="item">
+                                      <img class="img-responsive" src="{{producto.img}}" alt="{{producto.name}} thumbnail" />
+                                  </div>
+                              </div> -->
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="summary">
+                                <div class="desc">
+                                    <div class="header-desc">
+                                        <h2 class="product-title">{{curso.name}}</h2>
+                                        <p class="price">${{curso.price}}</p>
+                                    </div>
+                                    <div class="body-desc">
+                                        <div class="woocommerce-product-details-short-description">
+                                            <p>{{curso.info_short}} </p>
+                                        </div>
+                                    </div>
+                                    <div class="footer-desc">
+                                        <form class="cart">
+                                            <div class="quantity buttons-added">
+                                                <input class="minus" value="-" type="button" />
+                                                <input class="input-text qty text" step="1" min="1" max="" name="quantity" value="1" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric" type="number" />
+                                                <input class="plus" value="+" type="button" />
+                                            </div>
+                                            <div class="group-btn-control-wrapper">
+                                                <button class="btn btn-brand no-radius">ADD TO CART</button>
+                                                <button class="btn btn-wishlist btn-brand-ghost no-radius">
+                      <i class="fa fa-heart"></i>
+                    </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="product-meta">
+                                    <p class="posted-in" *ngFor="let cat of categories | slice:0:1; let i =index; ">Category:
+                                        <a href="#" rel="tag" value="{{curso.category_id}}">{{cat.category_name}} </a>
+                                    </p>
+                                    <!-- <p class="id">ID:
+                                        <a href="#">A203</a>
+                                    </p> -->
+                                </div>
+                                <div class="widget-social align-left">
+                                    <ul>
+                                        <li>
+                                            <a class="facebook" data-toggle="tooltip" title="Facebook" href="http://www.facebook.com/authemes">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="pinterest" data-toggle="tooltip" title="Pinterest" href="http://www.pinterest.com/authemes">
+                                                <i class="fa fa-pinterest"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="twitter" data-toggle="tooltip" title="Twitter" href="http://www.twitter.com/authemes">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="google-plus" data-toggle="tooltip" title="Google Plus" href="https://plus.google.com/authemes">
+                                                <i class="fa fa-google-plus"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="instagram" data-toggle="tooltip" title="Instagram" href="https://instagram.com/authemes">
+                                                <i class="fa fa-instagram"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

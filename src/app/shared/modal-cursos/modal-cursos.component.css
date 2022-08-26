@@ -1,0 +1,13 @@
+form.cart .quantity .minus,
+form.cart .quantity .plus {
+    padding: 0;
+    background-color: transparent;
+    width: 48px;
+    height: 26px;
+    font-size: 18px;
+    transition: all 0.3s ease-in-out;
+}
+
+form.cart .quantity .qty {
+    height: 26px;
+}

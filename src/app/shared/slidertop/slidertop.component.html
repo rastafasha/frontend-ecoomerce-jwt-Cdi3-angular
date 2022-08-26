@@ -1,0 +1,26 @@
+<div class="u-mb60">
+
+    <div class="banner-slider-3 rev_slider" id="slider-3">
+        <ul>
+            <li *ngFor="let item of sliders">
+                <!-- <img [src]="item.img " alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10"> -->
+                <div class="tp-caption" [ngStyle]="{'background-image': 'url(' + item.img + ')'}">
+                    <!-- <img [src]="item.img " alt="text-demo"> -->
+                    <h2>{{item.title}}</h2>
+                </div>
+                <div class="tp-caption" data-x="center" data-y="center" data-voffset="250" data-transform_in="y:100px;opacity:0;s:800;e:easeInOutCubic;" data-transform_out="y:200px;opacity:0;s:300;" data-start="1600">
+                    <a class="btn btn-brand pill" [routerLink]="[item.enlace]">SHOP NOW</a>
+                </div>
+            </li>
+            <!-- <li data-transition="fade">
+                <img src="./assets/images/slider/041.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10">
+                <div class="tp-caption" data-x="center" data-y="center" data-voffset="" data-transform_in="y:-80px;opacity:0;s:800;e:easeInOutCubic;" data-transform_out="y:-80px;opacity:0;s:300;" data-start="1000">
+                    <img src="./assets/images/slider/slider-2-text-01.png" alt="text-demo">
+                </div>
+                <div class="tp-caption" data-x="center" data-y="center" data-voffset="250" data-transform_in="y:100px;opacity:0;s:800;e:easeInOutCubic;" data-transform_out="y:200px;opacity:0;s:300;" data-start="1600">
+                    <a class="btn btn-brand pill" routerLink="/products">SHOP NOW</a>
+                </div>
+            </li> -->
+        </ul>
+    </div>
+</div>

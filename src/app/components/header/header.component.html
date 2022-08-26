@@ -1,0 +1,70 @@
+<header>
+    <div id="pagewrap">
+        <p id="back-top" style="display: block;">
+            <a href="#top">
+            </a>
+        </p>
+    </div>
+    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
+        <ul>
+            <li><a href="https://redclh.org/redclhAdmin/" target="_blank" class="cmn-t-underline">Ingresar</a></li>
+
+            <li *ngFor="let item of categories">
+                <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="true">
+                    <!-- <i [class]="item.icono"></i> -->
+                    <span class="hide-menu">{{item.category_name}}<span class="label label-rouded label-themecolor pull-right">
+                    {{item.length}}
+                  </span>
+                    </span>
+                </a>
+                <ul aria-expanded="true" class="collapse">
+                    <li *ngFor="let subMenuItem of item.submenu">
+                        <a [routerLink]="subMenuItem.url" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{subMenuItem.titulo}} </a>
+                    </li>
+                </ul>
+            </li>
+            <li *ngFor="let item of sidebarService.menu">
+                <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="true">
+                    <i [class]="item.icono"></i>
+                    <span class="hide-menu">{{item.titulo}}<span class="label label-rouded label-themecolor pull-right">
+                    {{item.submenu.length}}
+                  </span>
+                    </span>
+                </a>
+                <ul aria-expanded="true" class="collapse">
+                    <li *ngFor="let subMenuItem of item.submenu">
+                        <a [routerLink]="subMenuItem.url" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{subMenuItem.titulo}} </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+    </nav>
+
+    <div class="clear"></div>
+    <div class="container  tttt logoo" style="display: none;">
+        <a href="/">
+            <div class="sli header texto ttt1" id="sli1">
+                <div class="logo2 Up">
+                    <img src="./assets/img/logo-text.png" alt="logo ">
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="clear"></div>
+    <div class="container tttt">
+        <a href="/">
+            <div class="sli header ttt1">
+                <div class="logocompleto "></div>
+
+            </div>
+
+        </a>
+    </div>
+</header>
+
+<div class="main">
+    <div class="container">
+        <div id="showRightPush" class="menn" (click)="openMenu()">&#9776; </div>
+    </div>
+</div>

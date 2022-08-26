@@ -1,0 +1,137 @@
+<div class="contact" id="page">
+
+
+    <section class="sub-header shop-layout-1">
+        <img class="rellax bg-overlay" src="./assets/images/sub-header/09.jpg" alt="">
+        <div class="overlay-call-to-action"></div>
+        <h3 class="heading-style-3">Contact Us</h3>
+    </section>
+    <section class="boxed-sm">
+        <div class="container">
+            <div class="row">
+                <div class="row icon-box-contact-wrapper">
+                    <div class="row main">
+                        <div class="col-md-10">
+                            <div class="col-md-4">
+                                <div class="icon-box">
+                                    <div *ngIf="configuraciones[0].direccion">
+                                        <i class="fa fa-map-marker"></i>
+                                        <p>{{configuraciones[0].direccion}}</p>
+                                    </div>
+                                    <div *ngIf="configuraciones[0].horarios">
+                                        <p>{{configuraciones[0].horarios}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="icon-box">
+                                    <div *ngIf="configuraciones[0].telefono_uno">
+                                        <a href="tel:{{configuraciones[0].telefono_uno}} ">
+                                            <i class="fa fa-mobile"></i><br> {{configuraciones[0].telefono_uno}}
+                                        </a>
+
+                                    </div>
+                                    <div *ngIf="configuraciones[0].telefono_dos">
+                                        <a href="tel:{{configuraciones[0].telefono_dos}} ">
+                                      {{configuraciones[0].telefono_dos}}</a>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-4">
+                                <div class="icon-box">
+                                    <div *ngIf="configuraciones[0].email_uno">
+                                        <a href="mailto:{{configuraciones[0].email_uno}} ">
+                                            <i class="fa fa-envelope-o"></i><br> {{configuraciones[0].email_uno}} </a>
+
+                                    </div>
+                                    <div *ngIf="configuraciones[0].email_dos">
+                                        <a href="mailto:{{configuraciones[0].email_dos}} ">
+                                      {{configuraciones[0].email_dos}} </a>
+
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="widget-social align-left">
+                                <ul>
+                                    <li *ngIf="configuraciones[0].facebook">
+                                        <a class="facebook" data-toggle="tooltip" title="Facebook" target="_blank" href="{{configuraciones[0].facebook}}">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li *ngIf="configuraciones[0].pinterest">
+                                        <a class="pinterest" data-toggle="tooltip" title="Pinterest" target="_blank" href="{{configuraciones[0].pinterest}}">
+                                            <i class="fa fa-pinterest"></i>
+                                        </a>
+                                    </li>
+                                    <li *ngIf="configuraciones[0].twitter">
+                                        <a class="twitter" data-toggle="tooltip" title="Twitter" target="_blank" href="{{configuraciones[0].twitter}}">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li *ngIf="configuraciones[0].youtube">
+                                        <a class="youtube" data-toggle="tooltip" title="Youtube" target="_blank" href="{{configuraciones[0].youtube}}">
+                                            <i class="fa fa-youtube"></i>
+                                        </a>
+                                    </li>
+                                    <li *ngIf="configuraciones[0].instagram">
+                                        <a class="instagram" data-toggle="tooltip" title="Instagram" target="_blank" href="{{configuraciones[0].instagram}}">
+                                            <i class="fa fa-instagram"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="map-canvas" id="js-map-canvas"></div>
+                <iframe src="{{configuraciones[0].iframe}}" frameborder="0"></iframe>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row form-contact">
+                <div class="row main">
+                    <form>
+                        <div class="col-md-12">
+                            <div class="form-group organic-form xs-radius">
+                                <textarea class="form-control" placeholder="Your Message" rows="6"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group organic-form xs-radius">
+                                <input class="form-control" placeholder="Your Name">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group organic-form xs-radius">
+                                <input class="form-control" placeholder="Your Email" type="email">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group organic-form xs-radius">
+                                <input class="form-control" placeholder="Phone Number">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group organic-form xs-radius">
+                                <button class="btn btn-brand pill">SEND EMAIL</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
