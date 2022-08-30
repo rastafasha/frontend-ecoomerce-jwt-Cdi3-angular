@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { HttpBackend, HttpClient } from '@angular/common/http';
 import { Producto } from 'src/app/models/producto';
 import { ProductoService } from 'src/app/services/producto.service';
+import { MessageService } from 'src/app/services/message.service';
 
 
 
@@ -16,6 +17,7 @@ import { ProductoService } from 'src/app/services/producto.service';
 export class ProductosComponent implements OnInit {
 
   public productos: Producto;
+  public product: Producto;
 
 
   error!: string;
@@ -30,7 +32,8 @@ export class ProductosComponent implements OnInit {
   constructor(
     public productoService: ProductoService,
     private router: Router,
-    handler: HttpBackend
+    handler: HttpBackend,
+    private messageService: MessageService
   ) {
     this.http = new HttpClient(handler);
    }
@@ -38,6 +41,7 @@ export class ProductosComponent implements OnInit {
   ngOnInit(): void {
     window.scrollTo(0,0);
     this.loadProducts();
+    window.scrollTo(0,0);
 
 
   }
@@ -48,6 +52,11 @@ export class ProductosComponent implements OnInit {
         console.log(this.productos);
       }
     )
+  }
+
+  addToCart(): void{
+    console.log('sending...')
+    this.messageService.sendMessage(this.product);
   }
 
 }

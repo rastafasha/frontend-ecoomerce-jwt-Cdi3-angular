@@ -1,15 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
-// import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
-import { Producto } from 'src/app/models/producto';
+import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
+import { Producto } from '../../models/producto';
 import { MessageService } from 'src/app/services/message.service';
 import { CartItemModel } from '../../models/cart-item-model';
 import { StorageService } from '../../services/storage.service';
 import { environment } from '../../../environments/environment';
-// import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalComponent } from '../modal/modal.component';
-// import { NgxSpinnerService } from "ngx-spinner";
-import {CategoryService} from '../../services/category.service';
-
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalPagoComponent } from '../modal-pago/modal-pago.component';
 
 @Component({
   selector: 'app-cart',
@@ -28,13 +25,12 @@ export class CartComponent implements OnInit {
 
 
 
-  // public payPalConfig ? : IPayPalConfig;
+  public payPalConfig ? : IPayPalConfig;
 
   constructor(
     private messageService: MessageService,
     private storageService: StorageService,
-    public categoryService: CategoryService,
-    // private modalService: NgbModal,
+    private modalService: NgbModal,
     // private spinner: NgxSpinnerService
 
     ) {
@@ -53,73 +49,73 @@ export class CartComponent implements OnInit {
 
   private initConfig(): void {
 
-    // this.payPalConfig = {
-    //   currency: 'USD',
-    //   clientId: environment.clientIdPaypal,
-    //   // clientId: 'sb',
-    //   createOrderOnClient: (data) => < ICreateOrderRequest > {
+    this.payPalConfig = {
+      currency: 'USD',
+      clientId: environment.sandboxPaypal,
+      // clientId: 'sb',
+      createOrderOnClient: (data) => < ICreateOrderRequest > {
 
 
-    //       intent: 'CAPTURE',
-    //       purchase_units: [{
-    //           amount: {
-    //               currency_code: 'USD',
-    //               value: this.getTotal().toString(),
-    //               breakdown: {
-    //                   item_total: {
-    //                       currency_code: 'USD',
-    //                       value: this.getTotal().toString(),
-    //                   }
-    //               }
-    //           },
-    //           items: this.getItemsList(),
-    //       }]
-    //     },
-    //     advanced: {
-    //         commit: 'true'
-    //     },
-    //     style: {
-    //         label: 'paypal',
-    //         layout: 'vertical'
-    //     },
-    //     onApprove: (data, actions) => {
-    //         // this.spinner.show();
-    //         console.log('onApprove - transaction was approved, but not authorized', data, actions);
-    //         actions.order.get().then(details => {
-    //             console.log('onApprove - you can get full order details inside onApprove: ', details);
-    //         });
+          intent: 'CAPTURE',
+          purchase_units: [{
+              amount: {
+                  currency_code: 'USD',
+                  value: this.getTotal().toString(),
+                  breakdown: {
+                      item_total: {
+                          currency_code: 'USD',
+                          value: this.getTotal().toString(),
+                      }
+                  }
+              },
+              items: this.getItemsList(),
+          }]
+        },
+        advanced: {
+            commit: 'true'
+        },
+        style: {
+            label: 'paypal',
+            layout: 'vertical'
+        },
+        onApprove: (data, actions) => {
+            // this.spinner.show();
+            console.log('onApprove - transaction was approved, but not authorized', data, actions);
+            actions.order.get().then(details => {
+                console.log('onApprove - you can get full order details inside onApprove: ', details);
+            });
 
-    //     },
-    //     onClientAuthorization: (data) => {
-    //         console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point',
-    //         JSON.stringify(data));
-    //         // this.openModal(
-    //         //   data.purchase_units[0].items,
-    //         //   data.purchase_units[0].amount.value,
-    //         // );
-    //         this.emptyCart();
-    //         // this.spinner.hide();
+        },
+        onClientAuthorization: (data) => {
+            console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point',
+            JSON.stringify(data));
+            this.openModal(
+              data.purchase_units[0].items,
+              data.purchase_units[0].amount.value,
+            );
+            this.emptyCart();
+            // this.spinner.hide();
 
-    //     },
-    //     onCancel: (data, actions) => {
-    //         console.log('OnCancel', data, actions);
-    //     },
-    //     onError: err => {
-    //         console.log('OnError', err);
+        },
+        onCancel: (data, actions) => {
+            console.log('OnCancel', data, actions);
+        },
+        onError: err => {
+            console.log('OnError', err);
 
-    //     },
-    //     onClick: (data, actions) => {
-    //         console.log('onClick', data, actions);
+        },
+        onClick: (data, actions) => {
+            console.log('onClick', data, actions);
 
-    //     },
-    // };
+        },
+    };
 }
 
   getItem():void{
     this.messageService.getMessage().subscribe((product:Producto)=>{
       let exists = false;
       this.cartItems.forEach(item =>{
-        if(item.productId === product.id){
+        if(item.productCode === product.cod_prod){//evita el sobre escribir el id
           exists = true;
           item.quantity++;
         }
@@ -183,12 +179,12 @@ export class CartComponent implements OnInit {
     this.storageService.setCart(this.cartItems);
   }
 
-  // openModal(items, amount): void{
-  //   const modalRef = this.modalService.open(ModalComponent);
-  //   modalRef.componentInstance.items = items;
-  //   modalRef.componentInstance.amount = amount;
+  openModal(items, amount): void{debugger
+    const modalRef = this.modalService.open(ModalPagoComponent);
+    modalRef.componentInstance.items = items;
+    modalRef.componentInstance.amount = amount;
 
-  // }
+  }
 
 
 

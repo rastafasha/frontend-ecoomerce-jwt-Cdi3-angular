@@ -10,11 +10,28 @@ import { ProductosComponent } from './productos/productos.component';
 import { ComponentsModule } from '../components/components.module';
 import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import { CmspageModule } from '../cmspage/cmspage.module';
+
+
 import { CursoComponent } from './curso/curso.component';
 import { CursosComponent } from './cursos/cursos.component';
 import { HomeComponent } from './home/home.component';
+import { CarritoComponent } from './carrito/carrito.component';
 
+//pluggins
+import { NgxPayPalModule } from 'ngx-paypal';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FaqComponent } from './faq/faq.component';
+import { BlogListComponent } from './blog-list/blog-list.component';
+import { BlogDetailComponent } from './blog-detail/blog-detail.component';
+// import { NgxSpinnerModule } from "ngx-spinner";
+import { PrivacypolicyComponent } from './privacypolicy/privacypolicy.component';
 
+// formulario
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CartCheckoutComponent } from './cart-checkout/cart-checkout.component';
+// paginacion
+// import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -25,7 +42,13 @@ import { HomeComponent } from './home/home.component';
     ProductosComponent,
     CursoComponent,
     CursosComponent,
-    HomeComponent
+    HomeComponent,
+    CarritoComponent,
+    FaqComponent,
+    BlogListComponent,
+    BlogDetailComponent,
+    PrivacypolicyComponent,
+    CartCheckoutComponent
   ],
   exports: [
     ContactComponent,
@@ -35,7 +58,13 @@ import { HomeComponent } from './home/home.component';
     ProductosComponent,
     CursoComponent,
     CursosComponent,
-    HomeComponent
+    HomeComponent,
+    CarritoComponent,
+    FaqComponent,
+    BlogListComponent,
+    BlogDetailComponent,
+    PrivacypolicyComponent,
+    CartCheckoutComponent
   ],
   imports: [
     CommonModule,
@@ -43,6 +72,12 @@ import { HomeComponent } from './home/home.component';
     SharedModule,
     RouterModule,
     HttpClientModule,
+    NgxPayPalModule,
+    NgbModule,
+    CmspageModule,
+    // NgModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class PagesModule { }

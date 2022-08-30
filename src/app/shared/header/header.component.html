@@ -4,47 +4,40 @@
             <li>
                 <a routerLink="/home" routerLinkActive="active">Home</a>
             </li>
-            <!-- <li>
-                <a href="#">Cursos</a>
-                <ul>
-                    <li>
-                        <a routerLink="/course" routerLinkActive="active">Shop List</a>
-                    </li>
-                    <li>
-                        <a routerLink="/courses" routerLinkActive="active">Wishlist</a>
-                    </li>
-                    <li>
-                        <a href="shop-cart.html">Shop Cart</a>
-                    </li>
-                    <li>
-                        <a href="check-out.html">Checkout</a>
-                    </li>
-                </ul>
-            </li> -->
-            <li>
-                <a routerLink="/cursos" routerLinkActive="active">Cursos</a>
-            </li>
-            <li>
-                <a routerLink="/productos" routerLinkActive="active">Products</a>
+            <li *ngFor="let cat of categories ">
+                <a [routerLink]="['/category', cat.category_name]">{{cat.category_name}}</a>
             </li>
             <li>
                 <a routerLink="/about" routerLinkActive="active">About</a>
+            </li>
+
+            <li>
+                <a routerLink="/gallery" routerLinkActive="active">Gallery</a>
+            </li>
+            <li>
+                <a routerLink="/blogs" routerLinkActive="active">Blog</a>
+            </li>
+            <li>
+                <a routerLink="/cart" routerLinkActive="active">Cart</a>
             </li>
             <li>
                 <a routerLink="/contact" routerLinkActive="active">Contact</a>
             </li>
             <li>
-                <a href="#">Gallery</a>
+                <a href="#">User</a>
                 <ul>
                     <li>
-                        <a routerLink="/gallery" routerLinkActive="active">404 Page</a>
+                        <a routerLink="/gallery" routerLinkActive="active">My Profile</a>
+                    </li>
+                    <li>
+                        <a routerLink="/gallery" routerLinkActive="active">Logout</a>
                     </li>
                 </ul>
             </li>
         </ul>
     </nav>
     <header class="header-style-3">
-        <a class="brand-logo animsition-link" routerLink="/home">
+        <a class="brand-logo " routerLink="/home">
             <img class="img-responsive" src="./assets/images/logo.png" alt="" />
         </a>
         <div class="header-3-inner">
@@ -69,41 +62,45 @@
                     <li>
                         <a routerLink="/home" routerLinkActive="active">Home</a>
                     </li>
-                    <!-- <li>
-                        <a href="#">Cursos</a>
-                        <ul>
-                            <li>
-                                <a routerLink="/course" routerLinkActive="active">Shop List</a>
-                            </li>
-                            <li>
-                                <a routerLink="/courses" routerLinkActive="active">Wishlist</a>
-                            </li>
-                            <li>
-                                <a href="shop-cart.html">Shop Cart</a>
-                            </li>
-                            <li>
-                                <a href="check-out.html">Checkout</a>
-                            </li>
-                        </ul>
-                    </li> -->
-                    <li>
-                        <a routerLink="/cursos" routerLinkActive="active">Cursos</a>
+                    <li *ngFor="let cat of categories ">
+                        <a [routerLink]="['/category', cat.category_name]">{{cat.category_name}}</a>
                     </li>
                     <li>
                         <a routerLink="/about" routerLinkActive="active">About</a>
                     </li>
+
                     <li>
-                        <a routerLink="/productos" routerLinkActive="active">Products</a>
+                        <a routerLink="/gallery" routerLinkActive="active">Gallery</a>
+                    </li>
+                    <li>
+                        <a routerLink="/blogs" routerLinkActive="active">Blog</a>
+                    </li>
+                    <li>
+                        <a routerLink="/cart" routerLinkActive="active">Cart</a>
                     </li>
                     <li>
                         <a routerLink="/contact" routerLinkActive="active">Contact</a>
                     </li>
                     <li>
-                        <a href="#">Gallery</a>
+                        <a href="#">My Account</a>
                         <ul>
                             <li>
-                                <a routerLink="/gallery" routerLinkActive="active">404 Page</a>
+                                <a routerLink="/login" routerLinkActive="active">Login</a>
                             </li>
+                            <div *ngIf="!user">
+                                <li>
+                                    <a routerLink="/register" routerLinkActive="active">Register</a>
+                                </li>
+
+                            </div>
+                            <div *ngIf="user">
+                                <li>
+                                    <a routerLink="/myprofile" routerLinkActive="active">My Profile</a>
+                                </li>
+                                <li>
+                                    <a (click)="logout()" routerLinkActive="active">Logout</a>
+                                </li>
+                            </div>
                         </ul>
                     </li>
                 </ul>
@@ -125,8 +122,9 @@
                     </div>
                 </div>
                 <div class="widget widget-control-header widget-shop-cart js-widget-shop-cart">
-                    <a class="control" href="#">
-                        <p class="counter">0</p>
+                    <a class="control" [routerLink]="['/cart']">
+                        <p>{{cartItems.length}}</p>
+                        <p>${{total}}</p>
                         <span class="lnr lnr-bag"></span>
                     </a>
                 </div>

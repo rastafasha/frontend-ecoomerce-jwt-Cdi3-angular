@@ -94,15 +94,20 @@
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container" *ngIf="configuraciones[0].iframe_mapa">
             <div class="row">
                 <div class="map-canvas" id="js-map-canvas"></div>
-                <iframe src="{{configuraciones[0].iframe}}" frameborder="0"></iframe>
             </div>
         </div>
+        <div class="container" *ngIf="!configuraciones[0].iframe_mapa">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.878891988215!2d-66.85781458552528!3d10.431184068324201!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2af7cab47b2545%3A0x633eed20b60e339e!2sCentro%20M%C3%A9dico%20Docente%20La%20Trinidad!5e0!3m2!1ses!2sve!4v1576009967450!5m2!1ses!2sve"
+                frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+
         <div class="container">
             <div class="row form-contact">
-                <div class="row main">
+                <app-contact-form></app-contact-form>
+                <!-- <div class="row main">
                     <form>
                         <div class="col-md-12">
                             <div class="form-group organic-form xs-radius">
@@ -130,7 +135,7 @@
                             </div>
                         </div>
                     </form>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>

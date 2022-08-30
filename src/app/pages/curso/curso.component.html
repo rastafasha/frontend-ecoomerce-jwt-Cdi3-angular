@@ -13,85 +13,102 @@
             <div class="container">
                 <div class="row product-detail">
                     <div class="row product-detail-wrapper">
-                        <div class="col-md-6">
-                            <div class="woocommerce-product-gallery vertical">
-                                <div class="main-carousel">
-                                    <div class="item">
-                                        <img class="img-responsive" src="{{curso.img}}" alt="{{curso.name}} thumbnail">
+                        <div class="col-md-8">
+                            <div class="col-md-6">
+                                <div class="woocommerce-product-gallery vertical">
+                                    <div class="main-carousel">
+                                        <div class="item">
+                                            <img class="img-responsive" src="{{curso.img}}" alt="{{curso.name}} thumbnail">
+                                        </div>
+
                                     </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="summary">
+                                    <div class="desc">
+                                        <div class="header-desc">
+                                            <h2 class="product-title">{{curso.name}} </h2>
+                                            <p class="price">${{curso.price}} </p>
+                                        </div>
+                                        <div class="body-desc">
+                                            <div class="woocommerce-product-details-short-description">
+                                                <p>{{curso.info_short}} </p>
+                                            </div>
+                                        </div>
+                                        <div class="footer-desc">
+                                            <div class="group-btn-control-wrapper">
+                                                <!-- <input class="qty" step="1" min="0" max="" name="{{item.quantity}}" value="{{item.quantity}}" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric" type="number"> -->
+                                                <button href="#" class="btn btn-outline-success" (click)="addToCart()"> <i class="fa fa-cart"></i> add to cart</button>
+                                                <!-- <button href="#" class="btn btn-brand no-radius" (click)="addToCart()">ADD TO CART</button> -->
+                                                <button class="btn btn-wishlist btn-brand-ghost no-radius">
+                                                  <i class="fa fa-heart"></i>
+                                                </button>
+                                            </div>
+                                            <!-- <form class="cart">
+                                                <div class="quantity buttons-added">
+                                                    <input class="minus" value="-" type="button">
+                                                    <input class="input-text qty text" step="1" min="1" max="" name="quantity" value="1" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric" type="number">
+                                                    <input class="plus" value="+" type="button">
+                                                </div>
+                                                <div class="group-btn-control-wrapper">
+                                                    <button class="btn btn-brand no-radius">ADD TO CART</button>
+                                                    <button class="btn btn-wishlist btn-brand-ghost no-radius">
+                      <i class="fa fa-heart"></i>
+                    </button>
+                                                </div>
+                                            </form> -->
+
+                                        </div>
+                                    </div>
+                                    <div class="product-meta">
+                                        <p class="posted-in" *ngFor="let cat of categories | slice:1:2;  index as i ">Category:
+                                            <a [routerLink]="['/category', cat.category_name]" rel="tag" value="{{curso.category_id}}">{{cat.category_name}} </a>
+                                        </p>
+                                        <!-- <p class="tagged-as" *ngFor="let cat of categories">Tags:
+                                        <a href="#" rel="tag">{{cat.category_name}}</a>,
+                                    </p> -->
+                                        <p class="id">ID:
+                                            <a href="#">{{curso.cod_prod}}</a>
+                                            <!-- <a href="#">A203</a> -->
+                                        </p>
+                                    </div>
+
+                                    <!-- <div class="widget-social align-left">
+                                        <ul>
+                                            <li *ngIf="configuracion.facebook">
+                                                <a class="facebook" data-toggle="tooltip" title="Facebook" target="_blank" href="{{configuraciones[0].facebook}}">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li *ngIf="configuracion.pinterest">
+                                                <a class="pinterest" data-toggle="tooltip" title="Pinterest" target="_blank" href="{{configuraciones[0].pinterest}}">
+                                                    <i class="fa fa-pinterest"></i>
+                                                </a>
+                                            </li>
+                                            <li *ngIf="configuracion.twitter">
+                                                <a class="twitter" data-toggle="tooltip" title="Twitter" target="_blank" href="{{configuraciones[0].twitter}}">
+                                                    <i class="fa fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li *ngIf="configuracion.youtube">
+                                                <a class="youtube" data-toggle="tooltip" title="Youtube" target="_blank" href="{{configuraciones[0].youtube}}">
+                                                    <i class="fa fa-youtube"></i>
+                                                </a>
+                                            </li>
+                                            <li *ngIf="configuracion.instagram">
+                                                <a class="instagram" data-toggle="tooltip" title="Instagram" target="_blank" href="{{configuraciones[0].instagram}}">
+                                                    <i class="fa fa-instagram"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div> -->
 
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="summary">
-                                <div class="desc">
-                                    <div class="header-desc">
-                                        <h2 class="product-title">{{curso.name}} </h2>
-                                        <p class="price">${{curso.price}} </p>
-                                    </div>
-                                    <div class="body-desc">
-                                        <div class="woocommerce-product-details-short-description">
-                                            <p>{{curso.info_short}} </p>
-                                        </div>
-                                    </div>
-                                    <div class="footer-desc">
-                                        <form class="cart">
-                                            <div class="quantity buttons-added">
-                                                <input class="minus" value="-" type="button">
-                                                <input class="input-text qty text" step="1" min="1" max="" name="quantity" value="1" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric" type="number">
-                                                <input class="plus" value="+" type="button">
-                                            </div>
-                                            <div class="group-btn-control-wrapper">
-                                                <button class="btn btn-brand no-radius">ADD TO CART</button>
-                                                <button class="btn btn-wishlist btn-brand-ghost no-radius">
-                      <i class="fa fa-heart"></i>
-                    </button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class="product-meta">
-                                    <p class="posted-in" *ngFor="let cat of categories | slice:0:1; let i =index; ">Category:
-                                        <a href="#" rel="tag" value="{{curso.category_id}}">{{cat.category_name}} </a>
-                                    </p>
-                                    <!-- <p class="tagged-as" *ngFor="let cat of categories">Tags:
-                                        <a href="#" rel="tag">{{cat.category_name}}</a>,
-                                    </p> -->
-                                    <p class="id">ID:
-                                        <a href="#">A203</a>
-                                    </p>
-                                </div>
-                                <div class="widget-social align-left">
-                                    <ul>
-                                        <li>
-                                            <a class="facebook" data-toggle="tooltip" title="Facebook" href="http://www.facebook.com/authemes">
-                                                <i class="fa fa-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="pinterest" data-toggle="tooltip" title="Pinterest" href="http://www.pinterest.com/authemes">
-                                                <i class="fa fa-pinterest"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="twitter" data-toggle="tooltip" title="Twitter" href="http://www.twitter.com/authemes">
-                                                <i class="fa fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="google-plus" data-toggle="tooltip" title="Google Plus" href="https://plus.google.com/authemes">
-                                                <i class="fa fa-google-plus"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="instagram" data-toggle="tooltip" title="Instagram" href="https://instagram.com/authemes">
-                                                <i class="fa fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                        <div class="col-md-4">
+                            <app-cart></app-cart>
                         </div>
                     </div>
                 </div>
@@ -124,21 +141,29 @@
                                     <table class="shop_attributes table table-striped table-bordered">
                                         <tbody>
                                             <tr>
-                                                <th>Country</th>
+                                                <th>Creado </th>
                                                 <td>
-                                                    <p>England, London</p>
+                                                    <p>{{curso.created_at}}</p>
                                                 </td>
                                             </tr>
+                                            <div *ngIf="curso.updated_at">
+                                                <tr>
+                                                    <th>Ultima actualización</th>
+                                                    <td>
+                                                        <p>{{curso.updated_at}}</p>
+                                                    </td>
+                                                </tr>
+                                            </div>
+
                                             <tr>
-                                                <th>Weight</th>
+                                                <th>Artículo Disponible?</th>
                                                 <td>
-                                                    <p>3.5 Kg</p>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th>Next Day Delivery Available</th>
-                                                <td>
-                                                    <p>Yes</p>
+                                                    <div *ngIf="curso.is_featured == 1">
+                                                        <p>Si</p>
+                                                    </div>
+                                                    <div *ngIf="curso.is_featured == 0">
+                                                        <p>No</p>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         </tbody>

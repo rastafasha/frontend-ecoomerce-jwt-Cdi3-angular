@@ -1,0 +1,57 @@
+<div class="blog-layout-2" id="page">
+    <section class="sub-header shop-layout-1">
+        <img class="rellax bg-overlay" src="images/sub-header/05.jpg" alt="">
+        <div class="overlay-call-to-action"></div>
+        <h3 class="heading-style-3">Blog</h3>
+    </section>
+    <section class="boxed-sm">
+        <div class="container">
+            <div class="row main">
+                <div class="row js-post-masonry-3-columns-wrapper pinterest-layout-post pinterest-3-cols">
+                    <div class="post" *ngFor="let blog of blogs ">
+                        <div class="img-wrapper">
+                            <a [routerLink]="['/blog', blog.id]">
+                                <img src="{{blog.img}}" alt="blog-thumb" />
+                            </a>
+                        </div>
+                        <div class="desc">
+                            <h4>
+                                <a [routerLink]="['/blog', blog.id]">{{blog.title}}</a>
+                            </h4>
+                            <p class="meta">
+                                <span class="time">{{blog.created_at | date:'mediumDate'}}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <nav>
+                            <ul class="pagination pagination-style-2">
+                                <li>
+                                    <a class="prev page-numbers" href="#">
+                                        <i class="fa fa-long-arrow-left"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="page-numbers" href="#">3</a>
+                                </li>
+                                <li>
+                                    <a class="page-numbers" href="#">4</a>
+                                </li>
+                                <li>
+                                    <span class="page-numbers current">5</span>
+                                </li>
+                                <li>
+                                    <a class="next page-numbers" href="#">
+                                        <i class="fa fa-long-arrow-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

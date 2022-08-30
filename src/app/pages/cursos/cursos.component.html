@@ -33,12 +33,12 @@
                     <figure class="item" *ngFor="let curso of cursos">
                         <div class="product product-style-1">
                             <div class="img-wrapper">
-                                <a [routerLink]="['/curso', curso.id]">
+                                <a [routerLink]="['/category/cursos/', curso.cod_prod]">
                                     <img class="img-responsive" src="{{curso.img}}" alt="product thumbnail" />
                                 </a>
                                 <div class="product-control-wrapper bottom-right">
                                     <div class="wrapper-control-item">
-                                        <a class="js-quick-view" data-toggle="modal" [attr.data-target]="'#' + curso.id">
+                                        <a class="js-quick-view" data-toggle="modal" [attr.data-target]="'#' + curso.cod_prod">
                                             <!-- <a class="js-quick-view" href="#" type="button" data-toggle="modal" data-target="#quick-view-product"> -->
                                             <span class="lnr lnr-eye"></span>
                                         </a>
@@ -57,7 +57,7 @@
                             </div>
                             <figcaption class="desc text-center">
                                 <h3>
-                                    <a class="product-name" [routerLink]="['/curso', curso.id]">{{curso.name}}</a>
+                                    <a class="product-name" [routerLink]="['/category/cursos/', curso.cod_prod]">{{curso.name}}</a>
                                 </h3>
                                 <span class="price">${{curso.price}}</span>
                             </figcaption>

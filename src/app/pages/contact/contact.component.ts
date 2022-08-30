@@ -18,8 +18,9 @@ export class ContactComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+  window.scrollTo(0,0);
     this.obtenerConfiguracions();
-    // this.activatedRoute.params.subscribe( ({id}) => this.obtenerConfiguracion(id));
+    this.activatedRoute.params.subscribe( ({id}) => this.obtenerConfiguracion(id));
   }
 
    obtenerConfiguracions(){

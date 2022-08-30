@@ -3,22 +3,25 @@ import { Producto } from '../../models/producto';
 import { ProductoService } from 'src/app/services/producto.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { Category } from 'src/app/models/category';
+import { MessageService } from 'src/app/services/message.service';
 
 
 @Component({
-  selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.css']
+  selector: 'app-modal-producto',
+  templateUrl: './modal-producto.component.html',
+  styleUrls: ['./modal-producto.component.css']
 })
-export class ModalComponent implements OnInit {
+export class ModalProductoComponent implements OnInit {
 
   productos: Producto;
   categories: Category;
   error: string;
+  product: Producto;
 
   constructor(
     private productoService: ProductoService,
     public categoryService: CategoryService,
+    private messageService: MessageService
     ) { }
 
   ngOnInit() {
@@ -38,6 +41,11 @@ export class ModalComponent implements OnInit {
       (data: Category) => this.categories = data,
       error => this.error = error
     );
+  }
+
+  addToCart(): void{
+    console.log('sending...')
+    this.messageService.sendMessage(this.product);
   }
 
 }

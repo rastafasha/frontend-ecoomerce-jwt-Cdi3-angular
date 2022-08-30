@@ -1,6 +1,4 @@
-
-
-export interface Blog {
+export class Blog {
   id:           number;
   title:        string;
   category_id:  string;

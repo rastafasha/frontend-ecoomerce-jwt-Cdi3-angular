@@ -1,1 +1,69 @@
-<p>page works!</p>
+<div class="about" id="page">
+
+    <section class="sub-header shop-layout-1">
+        <img class="rellax bg-overlay" src="./assets/images/sub-header/08.jpg" alt="">
+        <div class="overlay-call-to-action"></div>
+        <h3 class="heading-style-3">My Account</h3>
+    </section>
+    <section class="boxed-sm">
+        <div class="container">
+            <div class="row blog-v reverse">
+                <div class="col-md-12">
+                    <div class="post">
+                        <div class="img-wrapper js-set-bg-blog-thumb">
+                            <div *ngIf="user.img">
+                                <img src="{{user.img}}" alt="user">
+                            </div>
+                            <div *ngIf="!user.img">
+                                <img src="./assets/images/about/01.jpg" alt="user">
+                            </div>
+                        </div>
+                        <div class="desc">
+                            <h3 class="title-about">{{user.first_name}} {{user.last_name}}</h3>
+                            <h4>{{user.username}}</h4>
+                            <h4>{{user.email}}</h4>
+                            <p class="sapo">We are a manufacturing base of organic food produced on our farm. We are a family health care production team, created by today's need for clean and safe food, driven by the desire to build meaningful and meaningful experiences.
+                                Vivamus et enim accumsan, tempus dui non, pretium libero. Vivamus vitae justo non metus malesuada finibus. Pellentesque vehicula porttitor eleifend. Proin eget velit in arcu consectetur tempor. Sed pulvinar, purus sed efficitur
+                                elementum, risus risus tincidunt massa, a iaculis risus turpis id sapien. Pellentesque a metus urna. Integer placerat et ante quis pharetra. Nulla facilisi. Donec egestas tortor non ante pulvinar, sit amet sollicitudin
+                                nisl auctor. Vestibulum aliquet finibus consectetur. Nullam faucibus vehicula est nec pulvinar.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="counter-wrapper">
+            <img class="rellax bg-overlay" src="./assets/images/call-to-action/4.jpg" alt="" />
+            <div class="overlay-counter"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="couter-wrapper">
+                            <p class="js-countup" data-count="154">0</p>
+                            <span>Compras</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="couter-wrapper">
+                            <p class="js-countup" data-count="234">0</p>
+                            <span>Favoritos</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="couter-wrapper">
+                            <p class="js-countup" data-count="32">0</p>
+                            <span>Cupones</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="couter-wrapper">
+                            <p class="js-countup" data-count="126">0</p>
+                            <span>Otros</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

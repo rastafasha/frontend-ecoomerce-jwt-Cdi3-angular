@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.obtenerSliders();
+    window.scrollTo(0,0);
   }
 
   obtenerSliders(){

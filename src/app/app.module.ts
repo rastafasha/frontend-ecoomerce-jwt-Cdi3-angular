@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -15,11 +15,16 @@ import { OrderModule } from 'ngx-order-pipe';
 import {PipesModule} from './pipes/pipes.module'
 import {PagesModule} from './pages/pages.module'
 import { SharedModule } from './shared/shared.module';
-import {ComponentsModule} from './components/components.module'
+import {ComponentsModule} from './components/components.module';
+import {CmspageModule} from './cmspage/cmspage.module';
+import {AuthModule} from './auth/auth.module';
+
+import { NotfoundComponent } from './notfound/notfound.component';
 
 
 //servicios
 
+import { httpInterceptorProviders } from './http-interceptors';
 import { CategoryService } from './services/category.service';
 import { SidebarService } from './services/sidebar.service';
 import { SliderService } from './services/slider.service';
@@ -29,15 +34,17 @@ import { BlogService } from './services/blog.service';
 import { ConfiguracionService } from './services/configuracion.service';
 import { MessageService } from './services/message.service';
 import { StorageService } from './services/storage.service';
+import { GalleryService } from './services/gallery.service';
 
 
 //pluggins
-// import { NgxPayPalModule } from 'ngx-paypal';
-// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
@@ -50,8 +57,9 @@ import { StorageService } from './services/storage.service';
     PipesModule,
     PagesModule,
     SharedModule,
-    // NgbModule,
-    // NgxPayPalModule
+    NgbModule,
+    NgxPayPalModule,
+    AuthModule,
 
   ],
   exports: [
@@ -59,18 +67,16 @@ import { StorageService } from './services/storage.service';
     AppRoutingModule,
     HttpClientModule,
     RouterModule,
-    // OrderModule,
-    // CKEditorModule,
-    // PipesModule,
-    // ComponentsModule,
-    // PagesModule,
-    // SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CmspageModule,
+    NgbModule,
 
 
   ],
 
   providers: [
-    //httpInterceptorProviders,
+    // httpInterceptorProviders,
     CategoryService,
     SidebarService,
     SliderService,
@@ -79,7 +85,9 @@ import { StorageService } from './services/storage.service';
     BlogService,
     ConfiguracionService,
     MessageService,
-    StorageService
+    StorageService,
+    GalleryService,
+    NgbActiveModal
     ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -10,7 +10,12 @@ import { PageFeaturedComponent } from './page-featured/page-featured.component';
 import { BlogFeaturedComponent } from './blog-featured/blog-featured.component';
 
 import { RouterModule } from '@angular/router';
+import { CartItemComponent } from './cart-item/cart-item.component';
+import { CartComponent } from './cart/cart.component';
 
+//pluggins
+import { NgxPayPalModule } from 'ngx-paypal';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     // FooterComponent,
@@ -19,18 +24,26 @@ import { RouterModule } from '@angular/router';
     ProductsFeaturedComponent,
     PageFeaturedComponent,
     BlogFeaturedComponent,
+    CartItemComponent,
+    CartComponent,
   ],
-  imports: [
-    CommonModule,
-    PipesModule,
-    SharedModule,
-    RouterModule
-  ],
+
   exports: [
     SliderComponent,
     ProductsFeaturedComponent,
     PageFeaturedComponent,
     BlogFeaturedComponent,
+    CartItemComponent,
+    CartComponent,
+
+  ],
+  imports: [
+    CommonModule,
+    PipesModule,
+    SharedModule,
+    RouterModule,
+    NgxPayPalModule,
+    NgbModule
   ],
 })
 export class ComponentsModule { }

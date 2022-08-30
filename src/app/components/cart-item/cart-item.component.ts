@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CartItemCurso } from 'src/app/models/cart-item-curso';
 import { CartItemModel } from '../../models/cart-item-model';
 
 @Component({
@@ -9,6 +10,7 @@ import { CartItemModel } from '../../models/cart-item-model';
 export class CartItemComponent implements OnInit {
 
   @Input() cartItem: CartItemModel;
+  // @Input() cartItemCurso: CartItemCurso;
 
   constructor() { }
 

@@ -29,8 +29,8 @@ export class CursoService {
     );
   }
 
-  getCurso(id: number) {
-    return this.http.get<Curso>(this.serverUrl + 'api_curso/curso/' + id).pipe(
+  getCurso(cod_prod: string) {
+    return this.http.get<Curso>(this.serverUrl + 'api_curso/curso/' + cod_prod).pipe(
       catchError(this.handleError)
     );
   }

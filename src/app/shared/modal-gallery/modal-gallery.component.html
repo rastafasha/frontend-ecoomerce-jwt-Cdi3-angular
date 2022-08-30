@@ -1,0 +1,21 @@
+<!-- Modal -->
+<div *ngFor="let gal of galleries; let i = index">
+    <div class="modal fade" id="{{gal.id}}" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg modal-quickview woocommerce" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="item">
+                            <img class="img-responsive" src="{{gal.img}}" alt="{{gal.titulo}} thumbnail" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

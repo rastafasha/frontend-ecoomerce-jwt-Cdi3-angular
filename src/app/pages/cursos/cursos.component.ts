@@ -5,6 +5,8 @@ import { environment } from 'src/environments/environment';
 import { HttpBackend, HttpClient } from '@angular/common/http';
 import { CursoService } from 'src/app/services/curso.service';
 import { Curso } from 'src/app/models/curso';
+import { ConfiguracionService } from 'src/app/services/configuracion.service';
+import { Configuracion } from 'src/app/models/configuracion';
 
 @Component({
   selector: 'app-cursos',
@@ -18,7 +20,7 @@ export class CursosComponent implements OnInit {
 
   error!: string;
 
-
+  configuracion: Configuracion;
 
   private http: HttpClient;
   ServerUrl = environment.baseUrl;
@@ -26,15 +28,18 @@ export class CursosComponent implements OnInit {
 
   constructor(
     public cursoService: CursoService,
+    public configuracionService: ConfiguracionService,
     private router: Router,
     handler: HttpBackend
   ) {
     this.http = new HttpClient(handler);
+
    }
 
   ngOnInit(): void {
     window.scrollTo(0,0);
     this.loadProducts();
+
 
 
   }
@@ -46,5 +51,6 @@ export class CursosComponent implements OnInit {
       }
     )
   }
+
 
 }

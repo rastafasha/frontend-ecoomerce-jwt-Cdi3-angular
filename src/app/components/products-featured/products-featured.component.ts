@@ -52,10 +52,10 @@ export class ProductsFeaturedComponent implements OnInit {
     return this.router.navigateByUrl('/producto')
   }
 
-  gotoProduct(id:number ) {
-    this.productoService.getProducto(id).subscribe(
+  gotoProduct(cod_prod:string ) {
+    this.productoService.getProducto(cod_prod).subscribe(
       res =>{
-        this.router.navigateByUrl('/producto/'+id);
+        this.router.navigateByUrl('/producto/'+cod_prod);
 
       }
     );

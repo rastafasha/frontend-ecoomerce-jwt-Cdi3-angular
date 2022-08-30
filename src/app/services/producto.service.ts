@@ -30,8 +30,8 @@ export class ProductoService {
     );
   }
 
-  getProducto(id: number) {
-    return this.http.get<Producto>(this.serverUrl + 'api_producto/producto/' + id).pipe(
+  getProducto(cod_prod: string) {
+    return this.http.get<Producto>(this.serverUrl + 'api_producto/producto/' + cod_prod).pipe(
       catchError(this.handleError)
     );
   }

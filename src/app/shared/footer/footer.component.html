@@ -3,27 +3,18 @@
         <div class="container">
             <div class="row">
                 <div class="widget-footer widget-text col-first col-small">
-                    <a href="#">
-                        <img class="logo-footer" src="./assets/images/logo.png" alt="Logo {{configuraciones[0].titulo}}" />
+                    <a routerLink="/home">
+                        <img class="logo-footer" src="./assets/images/logo.png" alt="Logo " />
                     </a>
                     <p>Suspendisse ut diam quis turpis convallis tempus. Sed ultrices lobortis dolor laoreet luctus. Morbi ornare nisi vitae tellus euismod bibendum. Pellentesque posuere iaculis volutpat. </p>
-                    <p>{{configuraciones[0].cr}}</p>
+
                 </div>
                 <div class="widget-footer widget-link col-second col-small">
                     <div class="list-link">
                         <h4 class="h4 heading">SHOP</h4>
                         <ul>
-                            <li>
-                                <a href="#">Food</a>
-                            </li>
-                            <li>
-                                <a href="#">Farm</a>
-                            </li>
-                            <li>
-                                <a href="#">Health</a>
-                            </li>
-                            <li>
-                                <a href="#">Organic</a>
+                            <li *ngFor="let cat of categories ">
+                                <a [routerLink]="['/category', cat.category_name]">{{cat.category_name}}</a>
                             </li>
                         </ul>
                     </div>
@@ -31,16 +22,16 @@
                         <h4 class="h4 heading">SUPPORT</h4>
                         <ul>
                             <li>
-                                <a href="#">Contact Us</a>
+                                <a [routerLink]="['/contact']">Contact Us</a>
                             </li>
                             <li>
-                                <a href="#">FAQ</a>
+                                <a [routerLink]="['/faq']" href="#">FAQ</a>
                             </li>
                             <li>
-                                <a href="#">Privacy Policy</a>
+                                <a [routerLink]="['/privacy-policy']" href="#">Privacy Policy</a>
                             </li>
                             <li>
-                                <a href="#">Blog</a>
+                                <a [routerLink]="['/blogs']" href="#">Blog</a>
                             </li>
                         </ul>
                     </div>
