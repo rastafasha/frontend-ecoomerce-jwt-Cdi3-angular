@@ -13,6 +13,7 @@ export class Curso {
   img: string;
   created_at: Date;
   updated_at: Date;
+  _id?: string;
 
   constructor(id, cod_prod, name, description, category_id, price, imageUrl,  ){
     this.id = id;

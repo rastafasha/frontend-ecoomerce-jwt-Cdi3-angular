@@ -7,6 +7,7 @@ import { StorageService } from '../../services/storage.service';
 import { environment } from '../../../environments/environment';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalPagoComponent } from '../modal-pago/modal-pago.component';
+import { Curso } from 'src/app/models/curso';
 
 @Component({
   selector: 'app-cart',
@@ -119,12 +120,14 @@ export class CartComponent implements OnInit {
           exists = true;
           item.quantity++;
         }
+
       });
       if(!exists){
         const cartItem = new CartItemModel(product);
         this.cartItems.push(cartItem);
 
       }
+
       this.total = this.getTotal();
       this.storageService.setCart(this.cartItems);
 

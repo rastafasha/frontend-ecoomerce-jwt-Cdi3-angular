@@ -14,8 +14,10 @@ import { UsuarioService } from './services/usuario.service';
 export class AppComponent implements OnInit {
 
   configuraciones: Configuracion;
+  configuracion: Configuracion;
 user: Usuario;
  error: {};
+
 constructor(
   public configuracionService: ConfiguracionService,
   public router: Router,
@@ -28,11 +30,12 @@ constructor(
 
   ngOnInit() {
     window.scrollTo(0, 0);
-    this.obtenerConfiguracion();
-    this.obtenerUser();
+    this.activatedRoute.params.subscribe( ({id}) => this.obtenerConfiguracion(id));
+
+    this.activatedRoute.params.subscribe( ({id}) => this.obtenerUser(id));
   }
 
-  obtenerConfiguracion(){
+  obtenerConfiguracions(){
     return this.configuracionService.getConfiguracions().subscribe(
       resp=>{
         this.configuraciones = resp;
@@ -41,13 +44,26 @@ constructor(
     )
   }
 
-  obtenerUser(){
+  obtenerConfiguracion(id:number){
+    this.configuracionService.getConfiguracion(1).subscribe(
+      resp=>{
+        this.configuracion = resp;
+        console.log(this.configuracion);
+      }
+    )
+  }
+
+  obtenerUser(id:number){
+    if(id !== null && id !== undefined){
     this.usuarioService.get_user(this.user.id).subscribe(
       resp=>{
         this.user = resp;
         console.log(this.user);
       }
     )
+   }else{
+    return 'not user';
+   }
   }
 
 

@@ -3,10 +3,10 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
 import { HttpBackend, HttpClient } from '@angular/common/http';
-import { CursoService } from 'src/app/services/curso.service';
 import { Curso } from 'src/app/models/curso';
-import { ConfiguracionService } from 'src/app/services/configuracion.service';
 import { Configuracion } from 'src/app/models/configuracion';
+import { ConfiguracionService } from 'src/app/services/configuracion.service';
+import { CursoService } from 'src/app/services/curso.service';
 
 @Component({
   selector: 'app-cursos',

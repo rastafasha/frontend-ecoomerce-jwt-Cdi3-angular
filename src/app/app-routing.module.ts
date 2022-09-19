@@ -21,11 +21,10 @@ import { ProductosComponent } from './pages/productos/productos.component';
 import { PageComponent } from './pages/page/page.component';
 
 
-import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
-    { path: 'about', component: PagesComponent},
+    { path: 'about/:id', component: PagesComponent},
     { path: 'category/cursos', component: CursosComponent},
     { path: 'category/cursos/:cod_prod', component: CursoComponent},
     { path: 'category/productos', component: ProductosComponent},
@@ -43,7 +42,7 @@ const routes: Routes = [
     { path: 'privacy-policy', component: PrivacypolicyComponent},
     { path: 'login', component: LoginComponent},
     { path: 'register', component: RegisterComponent},
-    { path: 'myaccount', component: PageComponent, canActivate: [ AuthGuard ]},
+    // { path: 'myaccount', component: PageComponent, canActivate: [ AuthGuard ]},
     { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component:  HomeComponent },
   // { path: '**', component:  NopagefoundComponent },

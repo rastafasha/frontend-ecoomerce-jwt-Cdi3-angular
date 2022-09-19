@@ -24,29 +24,25 @@
                         <table class="woocommerce-cart-table">
                             <thead>
                                 <tr>
-                                    <th class="product-thumbnail">Product</th>
-                                    <th class="product-name"></th>
-                                    <th class="product-weight">Category</th>
+                                    <th class="product-thumbnail">Product img</th>
                                     <th class="product-quantity">Quantity</th>
                                     <th class="product-price">Price</th>
                                     <th class="product-subtotal">Total</th>
-                                    <th class="product-remove"></th>
-                                    <th class="product-add"></th>
+                                    <th class="product-remove">Remove</th>
+                                    <th class="product-add">Add</th>
                                 </tr>
                             </thead>
                             <tbody *ngFor="let item of cartItems; index as i">
                                 <tr>
                                     <td class="product-thumbnail">
-                                        <img src="{{item.img}}" style="height: 60px;" alt="product-thumbnail">
+                                        <a class="product-thumbnail" [routerLink]="['/category/cat.category_name/',item.productId]">
+                                            <img src="{{item.img}}" style="height: 60px;" alt="product-thumbnail">
+                                        </a>
                                     </td>
-                                    <td class="product-name" data-title="Product" *ngFor="let cat of categories | slice:0:1; let i = index;">
-                                        <a class="product-name" [routerLink]="['/category/cat.category_name/',item.productId]">{{item.productName}}</a>
-                                    </td>
-                                    <td class="product-weight" data-title="Weight">{{item.category}}</td>
                                     <td class="product-quantity" data-title="Quantity">
                                         <input class="qty" step="1" min="0" max="" name="{{item.quantity}}" formControlName="quantity" value="{{item.quantity}}" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric" type="number">
                                     </td>
-                                    <td class="product-price" data-title="Price">${{item.productPrice}}</td>
+                                    <td class="product-price" data-title="Price">${{item.productPrice | number: '1.1-2'}}</td>
                                     <td class="product-subtotal" data-title="Total">${{item.quantity * item.productPrice | number: '1.1-2'}}</td>
                                     <td class="product-remove">
                                         <a class="remove" aria-label="Remove this item">

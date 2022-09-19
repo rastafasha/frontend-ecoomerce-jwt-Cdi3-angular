@@ -1,18 +1,15 @@
-
-
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { Params, Router } from '@angular/router';
-import { Slider } from '../models/slider';
-
+import { Page } from '../models/page';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SliderService {
+export class PageService {
 
   public datosvictima: string;
 
@@ -27,28 +24,29 @@ export class SliderService {
     this.media = environment.mediaUrl;
   }
 
-  getSliders() {
-    return this.http.get<Slider>(this.serverUrl + 'api_slider/sliders/').pipe(
+  getPages() {
+    return this.http.get<Page>(this.serverUrl + 'api_page/pages/').pipe(
       catchError(this.handleError)
     );
   }
 
-  getSlider(id: number) {
-    return this.http.get<Slider>(this.serverUrl + 'api_slider/slider/' + id).pipe(
+  getPage(id: number) {
+    return this.http.get<Page>(this.serverUrl + 'api_page/page/' + id).pipe(
       catchError(this.handleError)
     );
   }
 
-  getFeaturedSliders() {
-    return this.http.get<Slider>(this.serverUrl + 'api_slider/featured_sliders/').pipe(
-      catchError(this.handleError)
-    );
-  }
-getRecentSliders() {
-  return this.http.get<Slider>(this.serverUrl + 'api_slider/recent_sliders/').pipe(
+  getFeaturedPages() {
+    return this.http.get<Page>(this.serverUrl + 'api_page/pages/').pipe(
     catchError(this.handleError)
-  );
-}
+    );
+  }
+
+  getRecentPages() {
+    return this.http.get<Page>(this.serverUrl + 'api_page/recent_pages/').pipe(
+      catchError(this.handleError)
+    );
+  }
 
 
   private handleError(error: HttpErrorResponse) {

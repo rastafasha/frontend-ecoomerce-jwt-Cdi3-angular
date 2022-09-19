@@ -20,7 +20,7 @@ import { CarritoComponent } from './carrito/carrito.component';
 
 //pluggins
 import { NgxPayPalModule } from 'ngx-paypal';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FaqComponent } from './faq/faq.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
@@ -30,6 +30,19 @@ import { PrivacypolicyComponent } from './privacypolicy/privacypolicy.component'
 // formulario
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CartCheckoutComponent } from './cart-checkout/cart-checkout.component';
+import { BlogService } from '../services/blog.service';
+import { CategoryService } from '../services/category.service';
+import { ConfiguracionService } from '../services/configuracion.service';
+import { CursoService } from '../services/curso.service';
+import { GalleryService } from '../services/gallery.service';
+import { MessageService } from '../services/message.service';
+import { ProductoService } from '../services/producto.service';
+import { SidebarService } from '../services/sidebar.service';
+import { SliderService } from '../services/slider.service';
+import { StorageService } from '../services/storage.service';
+import { PageService } from '../services/page.service';
+
+
 // paginacion
 // import { NgxPaginationModule } from 'ngx-pagination';
 
@@ -75,9 +88,24 @@ import { CartCheckoutComponent } from './cart-checkout/cart-checkout.component';
     NgxPayPalModule,
     NgbModule,
     CmspageModule,
-    // NgModule,
     FormsModule,
     ReactiveFormsModule
-  ]
+  ],
+  providers: [
+    // httpInterceptorProviders,
+    CategoryService,
+    SidebarService,
+    SliderService,
+    ProductoService,
+    CursoService,
+    BlogService,
+    ConfiguracionService,
+    MessageService,
+    StorageService,
+    GalleryService,
+    NgbActiveModal,
+    PageService,
+    // PromocionService
+    ],
 })
 export class PagesModule { }

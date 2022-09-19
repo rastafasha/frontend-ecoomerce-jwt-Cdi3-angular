@@ -1,17 +1,16 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Category } from 'src/app/models/category';
-import { CategoryService } from 'src/app/services/category.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { SidebarService } from 'src/app/services/sidebar.service';
-import { ConfiguracionService } from 'src/app/services/configuracion.service';
-import { Configuracion } from 'src/app/models/configuracion';
+import { Category } from 'src/app/models/category';
+import { Producto } from 'src/app/models/producto';
+import { Usuario } from 'src/app/models/usuario.model';
 import { CartItemModel } from '../../models/cart-item-model';
 import { MessageService } from 'src/app/services/message.service';
 import { StorageService } from 'src/app/services/storage.service';
-import { Producto } from 'src/app/models/producto';
+import { CategoryService } from '../../services/category.service';
+import { ConfiguracionService } from 'src/app/services/configuracion.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
-import { Usuario } from 'src/app/models/usuario.model';
+import { SidebarService } from 'src/app/services/sidebar.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',

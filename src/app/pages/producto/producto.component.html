@@ -5,7 +5,7 @@
     <div class="shop-detail-3 woocommerce" id="page">
 
         <section class="sub-header shop-detail-1">
-            <img class="rellax bg-overlay" src="{{producto.img}}" alt="">
+            <img class="rellax bg-overlay" src="{{producto.img}}" alt="{{producto.name}}">
             <div class="overlay-call-to-action"></div>
             <h3 class="heading-style-3" style="color:#ccc">{{producto.name}}</h3>
         </section>
@@ -18,7 +18,7 @@
                                 <div class="woocommerce-product-gallery vertical">
                                     <div class="main-carousel">
                                         <div class="item">
-                                            <img class="img-responsive" src="{{producto.img}}" alt="{{producto.name}} ">
+                                            <img class="img-responsive" src="{{producto.img}}" alt="{{producto.name}} thumbnail">
                                         </div>
 
                                     </div>
@@ -37,75 +37,79 @@
                                             </div>
                                         </div>
                                         <div class="footer-desc">
-                                            <!-- <form class="cart">
-                                                <div class="quantity buttons-added">
-                                                    <input class="minus" value="-" type="button">
-                                                    <input class="input-text qty text" step="1" min="1" max="" name="quantity" value="1" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric" type="number">
-                                                    <input class="plus" value="+" type="button">
-                                                </div>
-                                                <div class="group-btn-control-wrapper">
-                                                  <button href="#" class="btn btn-outline-success" (click)="addToCart()"> <i class="fa fa-cart"></i> add to cart</button>
-                                                    <button href="#" class="btn btn-brand no-radius" (click)="addToCart()">ADD TO CART</button>
-                                                    <button class="btn btn-wishlist btn-brand-ghost no-radius">
-                                                      <i class="fa fa-heart"></i>
-                                                    </button>
-                                                </div>
-                                            </form> -->
                                             <div class="group-btn-control-wrapper">
+                                                <!-- <input class="qty" step="1" min="0" max="" name="{{item.quantity}}" value="{{item.quantity}}" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric" type="number"> -->
                                                 <button href="#" class="btn btn-outline-success" (click)="addToCart()"> <i class="fa fa-cart"></i> add to cart</button>
                                                 <!-- <button href="#" class="btn btn-brand no-radius" (click)="addToCart()">ADD TO CART</button> -->
                                                 <button class="btn btn-wishlist btn-brand-ghost no-radius">
-                                                  <i class="fa fa-heart"></i>
-                                                </button>
+                                                <i class="fa fa-heart"></i>
+                                              </button>
                                             </div>
+                                            <!-- <form class="cart">
+                                              <div class="quantity buttons-added">
+                                                  <input class="minus" value="-" type="button">
+                                                  <input class="input-text qty text" step="1" min="1" max="" name="quantity" value="1" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric" type="number">
+                                                  <input class="plus" value="+" type="button">
+                                              </div>
+                                              <div class="group-btn-control-wrapper">
+                                                  <button class="btn btn-brand no-radius">ADD TO CART</button>
+                                                  <button class="btn btn-wishlist btn-brand-ghost no-radius">
+                    <i class="fa fa-heart"></i>
+                  </button>
+                                              </div>
+                                          </form> -->
+
                                         </div>
                                     </div>
                                     <div class="product-meta">
-                                        <p class="posted-in" *ngFor="let cat of categories | slice:0:1;  index as i ">Category:
+                                        <p class="posted-in" *ngFor="let cat of categories | slice:1:1;  index as i ">Category:
                                             <a [routerLink]="['/category', cat.category_name]" rel="tag" value="{{producto.category_id}}">{{cat.category_name}} </a>
                                         </p>
-
+                                        <!-- <p class="tagged-as" *ngFor="let cat of categories">Tags:
+                                      <a href="#" rel="tag">{{cat.category_name}}</a>,
+                                  </p> -->
                                         <p class="id">ID:
                                             <a href="#">{{producto.cod_prod}}</a>
                                             <!-- <a href="#">A203</a> -->
                                         </p>
                                     </div>
+
                                     <!-- <div class="widget-social align-left">
-                                        <ul>
-                                            <li *ngIf="configuracion.facebook">
-                                                <a class="facebook" data-toggle="tooltip" title="Facebook" target="_blank" href="{{configuraciones[0].facebook}}">
-                                                    <i class="fa fa-facebook"></i>
-                                                </a>
-                                            </li>
-                                            <li *ngIf="configuracion.pinterest">
-                                                <a class="pinterest" data-toggle="tooltip" title="Pinterest" target="_blank" href="{{configuraciones[0].pinterest}}">
-                                                    <i class="fa fa-pinterest"></i>
-                                                </a>
-                                            </li>
-                                            <li *ngIf="configuracion.twitter">
-                                                <a class="twitter" data-toggle="tooltip" title="Twitter" target="_blank" href="{{configuraciones[0].twitter}}">
-                                                    <i class="fa fa-twitter"></i>
-                                                </a>
-                                            </li>
-                                            <li *ngIf="configuracion.youtube">
-                                                <a class="youtube" data-toggle="tooltip" title="Youtube" target="_blank" href="{{configuraciones[0].youtube}}">
-                                                    <i class="fa fa-youtube"></i>
-                                                </a>
-                                            </li>
-                                            <li *ngIf="configuracion.instagram">
-                                                <a class="instagram" data-toggle="tooltip" title="Instagram" target="_blank" href="{{configuraciones[0].instagram}}">
-                                                    <i class="fa fa-instagram"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div> -->
+                                      <ul>
+                                          <li *ngIf="configuracion.facebook">
+                                              <a class="facebook" data-toggle="tooltip" title="Facebook" target="_blank" href="{{configuraciones[0].facebook}}">
+                                                  <i class="fa fa-facebook"></i>
+                                              </a>
+                                          </li>
+                                          <li *ngIf="configuracion.pinterest">
+                                              <a class="pinterest" data-toggle="tooltip" title="Pinterest" target="_blank" href="{{configuraciones[0].pinterest}}">
+                                                  <i class="fa fa-pinterest"></i>
+                                              </a>
+                                          </li>
+                                          <li *ngIf="configuracion.twitter">
+                                              <a class="twitter" data-toggle="tooltip" title="Twitter" target="_blank" href="{{configuraciones[0].twitter}}">
+                                                  <i class="fa fa-twitter"></i>
+                                              </a>
+                                          </li>
+                                          <li *ngIf="configuracion.youtube">
+                                              <a class="youtube" data-toggle="tooltip" title="Youtube" target="_blank" href="{{configuraciones[0].youtube}}">
+                                                  <i class="fa fa-youtube"></i>
+                                              </a>
+                                          </li>
+                                          <li *ngIf="configuracion.instagram">
+                                              <a class="instagram" data-toggle="tooltip" title="Instagram" target="_blank" href="{{configuraciones[0].instagram}}">
+                                                  <i class="fa fa-instagram"></i>
+                                              </a>
+                                          </li>
+                                      </ul>
+                                  </div> -->
+
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <app-cart></app-cart>
                         </div>
-
                     </div>
                 </div>
                 <div class="woocommerce-tabs">

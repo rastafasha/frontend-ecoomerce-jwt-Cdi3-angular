@@ -105,10 +105,7 @@ export class UsuarioService {
 
         this.user = new Usuario(email, google, first_name, last_name, username, role_id, img, user_id);
 
-        this.guardarLocalStorage(
-          resp.token,
-          resp.user
-          );;
+        this.guardarLocalStorage(resp.token,resp.user);
           return true;
         }),
         catchError(error => of(false))
@@ -171,23 +168,15 @@ export class UsuarioService {
 
 
 
-  borrarUsuario(usuario: Usuario){
-    const url = `${base_url}api/deleteUser/${usuario.id}`;
-    return this.http.delete(url, this.headers)
-  }
 
-
-
-  get_user(usuario):Observable<any>{
-    const url = `${base_url}user/${usuario.id}`;
+  get_user(user):Observable<any>{
+    const url = `${base_url}user/` + user;
     return this.http.get(url, this.headers)
   }
 
 
 
-    guardarUsuario(usuario: Usuario){
-      return this.http.put(`${base_url}api/updateUser/${usuario.id}`, usuario, this.headers);
-    }
+
 
 
     getRoles(){

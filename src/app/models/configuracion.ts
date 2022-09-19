@@ -1,5 +1,5 @@
 export class Configuracion {
-  id: string;
+  id: number;
   titulo: string;
   cr: string;
   direccion: string;
@@ -17,4 +17,5 @@ export class Configuracion {
   logo: string;
   favicon: string;
   created_at: string;
+  _id?: string;
 }

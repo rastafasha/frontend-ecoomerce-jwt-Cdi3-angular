@@ -16,7 +16,9 @@ export class Slider {
     public updated_at: Date,
     public created_at: Date,
     public id?: number,
-  ){}
+    public _id?: string,
+
+    ){}
 
   get imagenUrl(){
 

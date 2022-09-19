@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Slider } from 'src/app/models/slider';
-import { SliderService } from 'src/app/services/slider.service';
+import { SliderService } from '../../services/slider.service';
 import { HttpClient } from '@angular/common/http';
 
 

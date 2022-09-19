@@ -22,19 +22,7 @@ import {AuthModule} from './auth/auth.module';
 import { NotfoundComponent } from './notfound/notfound.component';
 
 
-//servicios
 
-import { httpInterceptorProviders } from './http-interceptors';
-import { CategoryService } from './services/category.service';
-import { SidebarService } from './services/sidebar.service';
-import { SliderService } from './services/slider.service';
-import { ProductoService } from './services/producto.service';
-import { CursoService } from './services/curso.service';
-import { BlogService } from './services/blog.service';
-import { ConfiguracionService } from './services/configuracion.service';
-import { MessageService } from './services/message.service';
-import { StorageService } from './services/storage.service';
-import { GalleryService } from './services/gallery.service';
 
 
 //pluggins
@@ -62,33 +50,8 @@ import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AuthModule,
 
   ],
-  exports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    RouterModule,
-    FormsModule,
-    ReactiveFormsModule,
-    CmspageModule,
-    NgbModule,
 
 
-  ],
-
-  providers: [
-    // httpInterceptorProviders,
-    CategoryService,
-    SidebarService,
-    SliderService,
-    ProductoService,
-    CursoService,
-    BlogService,
-    ConfiguracionService,
-    MessageService,
-    StorageService,
-    GalleryService,
-    NgbActiveModal
-    ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

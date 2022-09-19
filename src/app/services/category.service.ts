@@ -6,7 +6,6 @@ import { environment } from '../../environments/environment';
 import { Params, Router } from '@angular/router';
 import { Category } from '../models/category';
 
-import { PaisResponsive } from '../interfaces/pais.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -36,11 +35,9 @@ export class CategoryService {
     );
   }
 
-  // getDatosvictimabyPais(code): Observable<any>{
-  //   const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-  //   return this.http.get( this.serverUrl + 'api_datosvictima/datosvictima/' + code, {headers});
 
-  // }
+
+
 
 
   private handleError(error: HttpErrorResponse) {

@@ -1,9 +1,9 @@
 <div class="about" id="page">
 
     <section class="sub-header shop-layout-1">
-        <img class="rellax bg-overlay" src="./assets/images/sub-header/08.jpg" alt="">
+        <img class="rellax bg-overlay" src="{{page.img}}" alt="{{page.title}}">
         <div class="overlay-call-to-action"></div>
-        <h3 class="heading-style-3">About Us</h3>
+        <h3 class="heading-style-3">{{page.title}}</h3>
     </section>
     <section class="boxed-sm">
         <div class="container">
@@ -11,30 +11,27 @@
                 <div class="col-md-12">
                     <div class="post">
                         <div class="img-wrapper js-set-bg-blog-thumb">
-                            <img src="./assets/images/about/01.jpg" alt="blog-thumb">
+                            <img src="{{page.img}}" alt="{{page.title}}">
                         </div>
                         <div class="desc">
-                            <h3 class="title-about">Who We Are</h3>
-                            <p class="sapo">We are a manufacturing base of organic food produced on our farm. We are a family health care production team, created by today's need for clean and safe food, driven by the desire to build meaningful and meaningful experiences.
-                                Vivamus et enim accumsan, tempus dui non, pretium libero. Vivamus vitae justo non metus malesuada finibus. Pellentesque vehicula porttitor eleifend. Proin eget velit in arcu consectetur tempor. Sed pulvinar, purus sed efficitur
-                                elementum, risus risus tincidunt massa, a iaculis risus turpis id sapien. Pellentesque a metus urna. Integer placerat et ante quis pharetra. Nulla facilisi. Donec egestas tortor non ante pulvinar, sit amet sollicitudin
-                                nisl auctor. Vestibulum aliquet finibus consectetur. Nullam faucibus vehicula est nec pulvinar.</p>
+                            <h3 class="title-about">{{page.title}}</h3>
+                            <p class="sapo">{{page.description}}</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12">
+                <!-- <div class="col-md-12">
                     <div class="post">
                         <div class="img-wrapper js-set-bg-blog-thumb">
                             <img src="./assets/images/about/02.jpg" alt="blog-thumb">
                         </div>
                         <div class="desc">
-                            <h3 class="title-about">What We Do</h3>
+                            <h3 class="title-about">{{page.title}}</h3>
                             <p class="sapo">We provide all kinds of organic products. Produced on our farm, the products are always fresh, multi-vitamins, rich variety for your family. With our organic food will bring delicious meals to your family.</p>
                             <p class="sapo">Vestibulum eu nisl vitae tortor feugiat aliquet finibus in libero. Vivamus et enim accumsan, tempus dui non, pretium libero. Vivamus vitae justo non metus malesuada finibus. Pellentesque vehicula porttitor eleifend. Proin eget
                                 velit in arcu consectetur tempor. Sed pulvinar, purus sed efficitur elementum, risus risus tincidunt massa, a iaculis risus turpis id sapien diam pellentesque ullamcorper. </p>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>

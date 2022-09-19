@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Configuracion } from 'src/app/models/configuracion';
-import { ConfiguracionService } from 'src/app/services/configuracion.service';
 import { ActivatedRoute } from '@angular/router';
-import { CategoryService } from 'src/app/services/category.service';
 import { Category } from 'src/app/models/category';
+import { CategoryService } from 'src/app/services/category.service';
+import { ConfiguracionService } from 'src/app/services/configuracion.service';
 
 @Component({
   selector: 'app-footer',
@@ -22,7 +22,7 @@ export class FooterComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.obtenerConfiguracions();
+    // this.obtenerConfiguracions();
     this.obtenerCategorias();
     this.activatedRoute.params.subscribe( ({id}) => this.obtenerConfiguracion(id));
   }

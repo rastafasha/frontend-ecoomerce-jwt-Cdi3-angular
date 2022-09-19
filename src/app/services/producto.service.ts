@@ -37,12 +37,12 @@ export class ProductoService {
   }
 
   getFeaturedProductos() {
-    return this.http.get<Producto>(this.serverUrl + 'api_producto/featured_productos/').pipe(
+    return this.http.get<Producto>(this.serverUrl + 'api_producto/productos/').pipe(
       catchError(this.handleError)
     );
   }
 getRecentProductos() {
-  return this.http.get<Producto>(this.serverUrl + 'api_producto/recent_productos/').pipe(
+  return this.http.get<Producto>(this.serverUrl + 'api_producto/productos/').pipe(
     catchError(this.handleError)
   );
 }
