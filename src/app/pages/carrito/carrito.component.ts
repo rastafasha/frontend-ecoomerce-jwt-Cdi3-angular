@@ -18,6 +18,8 @@ export class CarritoComponent implements OnInit {
 
   @Input() cartItem: CartItemModel;
 
+  imagenSerUrl = environment.mediaUrl;
+
   cartItems=[];
   total= 0;
   value: string;
@@ -115,7 +117,7 @@ export class CarritoComponent implements OnInit {
     this.messageService.getMessage().subscribe((product:Producto)=>{
       let exists = false;
       this.cartItems.forEach(item =>{
-        if(item.productCode === product.cod_prod){//evita el sobre escribir el id
+        if(item.productId === product._id){//evita el sobre escribir el id
           exists = true;
           item.quantity++;
         }

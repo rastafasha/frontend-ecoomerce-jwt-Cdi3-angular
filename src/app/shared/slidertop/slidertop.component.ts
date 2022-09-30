@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Slider } from 'src/app/models/slider';
 import { SliderService } from '../../services/slider.service';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -12,6 +13,7 @@ import { HttpClient } from '@angular/common/http';
 export class SlidertopComponent implements OnInit {
 
   sliders: Slider;
+  imagenSerUrl = environment.mediaUrl;
 
   constructor(
     public sliderService: SliderService,

@@ -22,7 +22,7 @@ export class CartComponent implements OnInit {
   cartItems=[];
   total= 0;
   value: string;
-  id:string;
+  _id:string;
 
 
 
@@ -116,7 +116,7 @@ export class CartComponent implements OnInit {
     this.messageService.getMessage().subscribe((product:Producto)=>{
       let exists = false;
       this.cartItems.forEach(item =>{
-        if(item.productCode === product.cod_prod){//evita el sobre escribir el id
+        if(item.productId === product._id){//evita el sobre escribir el id
           exists = true;
           item.quantity++;
         }
@@ -169,6 +169,7 @@ export class CartComponent implements OnInit {
     this.cartItems = [];
     this.total = 0;
     this.storageService.clear();
+    this.getItemsList();
   }
 
   deletItem(i:number):void{

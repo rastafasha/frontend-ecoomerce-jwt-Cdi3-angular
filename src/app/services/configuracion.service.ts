@@ -5,6 +5,8 @@ import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { Params, Router } from '@angular/router';
 import {Configuracion} from '../models/configuracion';
+import { map } from 'rxjs/operators';
+const base_url = environment.baseUrl;
 
 @Injectable({
   providedIn: 'root'
@@ -16,33 +18,47 @@ export class ConfiguracionService {
   public serverUrl: string;
   public media: string;
   public identity;
-  public token;
 
 
   constructor(private http: HttpClient, public router: Router) {
     this.serverUrl = environment.baseUrl;
-    this.media = environment.mediaUrl;
+  }
+
+  get token():string{
+    return localStorage.getItem('token') || '';
+  }
+
+  get headers(){
+    return{
+      headers: {
+        'x-token': this.token
+      }
+    }
   }
 
   getConfiguracions() {
-    return this.http.get<Configuracion>(this.serverUrl + 'api_configuracion/configuracions/').pipe(
-      catchError(this.handleError)
-    );
+    const url = `${base_url}/congenerals`;
+    return this.http.get(url, this.headers)
+      .pipe(
+        map((resp:{ok: boolean, configuracions: Configuracion[]}) => resp.configuracions)
+      )
   }
 
-  getConfiguracion(id: number) {
-    return this.http.get<Configuracion>(this.serverUrl + 'api_configuracion/configuracion/' + id).pipe(
-      catchError(this.handleError)
-    );
+  getConfiguracion(_id: string) {
+    const url = `${base_url}/congenerals/${_id}`;
+    return this.http.get(url, this.headers)
+      .pipe(
+        map((resp:{ok: boolean, configuracion: Configuracion}) => resp.configuracion)
+        );
   }
 
   getFeaturedConfiguracions() {
-    return this.http.get<Configuracion>(this.serverUrl + 'api_configuracion/featured_productos/').pipe(
+    return this.http.get<Configuracion>(this.serverUrl + '/congenerals/').pipe(
       catchError(this.handleError)
     );
   }
 getRecentConfiguracions() {
-  return this.http.get<Configuracion>(this.serverUrl + 'api_configuracion/recent_productos/').pipe(
+  return this.http.get<Configuracion>(this.serverUrl + '/congenerals/').pipe(
     catchError(this.handleError)
   );
 }

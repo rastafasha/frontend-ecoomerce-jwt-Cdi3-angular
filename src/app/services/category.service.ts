@@ -20,17 +20,16 @@ export class CategoryService {
 
   constructor(private http: HttpClient, public router: Router) {
     this.serverUrl = environment.baseUrl;
-    this.media = environment.mediaUrl;
   }
 
   getCategories() {
-    return this.http.get<Category>(this.serverUrl + 'api_category/categorys/').pipe(
+    return this.http.get<Category>(this.serverUrl + '/categorias/').pipe(
       catchError(this.handleError)
     );
   }
 
-  getCategory(id: number) {
-    return this.http.get<Category>(this.serverUrl + 'api_category/category/' + id).pipe(
+  getCategory(_id: number) {
+    return this.http.get<Category>(this.serverUrl + '/categorias/' + _id).pipe(
       catchError(this.handleError)
     );
   }

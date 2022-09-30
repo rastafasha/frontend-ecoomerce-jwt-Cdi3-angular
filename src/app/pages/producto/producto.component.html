@@ -5,7 +5,7 @@
     <div class="shop-detail-3 woocommerce" id="page">
 
         <section class="sub-header shop-detail-1">
-            <img class="rellax bg-overlay" src="{{producto.img}}" alt="{{producto.name}}">
+            <img class="rellax bg-overlay" src="{{imagenSerUrl}}/productos/{{producto.img}}" alt="{{producto.name}}">
             <div class="overlay-call-to-action"></div>
             <h3 class="heading-style-3" style="color:#ccc">{{producto.name}}</h3>
         </section>
@@ -18,7 +18,7 @@
                                 <div class="woocommerce-product-gallery vertical">
                                     <div class="main-carousel">
                                         <div class="item">
-                                            <img class="img-responsive" src="{{producto.img}}" alt="{{producto.name}} thumbnail">
+                                            <img class="img-responsive" src="{{imagenSerUrl}}/productos/{{producto.img}}" alt="{{producto.name}} thumbnail">
                                         </div>
 
                                     </div>
@@ -28,8 +28,9 @@
                                 <div class="summary">
                                     <div class="desc">
                                         <div class="header-desc">
-                                            <h2 class="product-title">{{producto.name}} </h2>
-                                            <p class="price">${{producto.price}} </p>
+                                            <h2 class="product-title">{{producto.titulo}} </h2>
+                                            <p class="price">${{producto.precio_ahora}}</p>
+                                            <p class="price">${{producto.precio_antes}} </p>
                                         </div>
                                         <div class="body-desc">
                                             <div class="woocommerce-product-details-short-description">
@@ -62,14 +63,22 @@
                                         </div>
                                     </div>
                                     <div class="product-meta">
-                                        <p class="posted-in" *ngFor="let cat of categories | slice:1:1;  index as i ">Category:
-                                            <a [routerLink]="['/category', cat.category_name]" rel="tag" value="{{producto.category_id}}">{{cat.category_name}} </a>
-                                        </p>
+                                        <!-- <p class="posted-in" *ngFor="let cat of categories | slice:1:1;  index as i ">Category:
+                                            <a [routerLink]="['/category', cat.category_name]" rel="tag" value="{{producto.categoria}}">{{cat.category_name}} </a>
+                                        </p> -->
                                         <!-- <p class="tagged-as" *ngFor="let cat of categories">Tags:
                                       <a href="#" rel="tag">{{cat.category_name}}</a>,
                                   </p> -->
                                         <p class="id">ID:
-                                            <a href="#">{{producto.cod_prod}}</a>
+                                            <!-- <a href="#">{{producto.cod_prod}}</a> -->
+                                            <!-- <a href="#">A203</a> -->
+                                        </p>
+                                        <p class="id">Categoria:
+                                            <br> {{producto.categoria}}
+                                            <br> {{producto.subcategoria}}
+                                        </p>
+                                        <p class="id">Stock:
+                                            <br> {{producto.stock}}
                                             <!-- <a href="#">A203</a> -->
                                         </p>
                                     </div>
@@ -134,7 +143,7 @@
                         <div class="col-md-8 col-md-offset-2">
                             <div class="tab-content tab-content-style-2">
                                 <div class="tab-pane fade in active" id="Description" role="tabpanel">
-                                    <p>{{producto.description}} </p>
+                                    <p>{{producto.detalle}} </p>
                                 </div>
                                 <div class="tab-pane fade" id="Additional-Information" role="tabpanel">
                                     <iframe src="{{producto.video_review}}" frameborder="0"></iframe>
@@ -143,14 +152,14 @@
                                             <tr>
                                                 <th>Creado </th>
                                                 <td>
-                                                    <p>{{producto.created_at}}</p>
+                                                    <p>{{producto.createdAt}}</p>
                                                 </td>
                                             </tr>
-                                            <div *ngIf="producto.updated_at">
+                                            <div *ngIf="producto.updatedAt">
                                                 <tr>
                                                     <th>Ultima actualización</th>
                                                     <td>
-                                                        <p>{{producto.updated_at}}</p>
+                                                        <p>{{producto.updatedAt}}</p>
                                                     </td>
                                                 </tr>
                                             </div>
@@ -158,10 +167,10 @@
                                             <tr>
                                                 <th>Artículo Disponible?</th>
                                                 <td>
-                                                    <div *ngIf="producto.is_featured == 1">
+                                                    <div *ngIf="producto.isFeatured == true">
                                                         <p>Si</p>
                                                     </div>
-                                                    <div *ngIf="producto.is_featured == 0">
+                                                    <div *ngIf="producto.isFeatured == false">
                                                         <p>No</p>
                                                     </div>
                                                 </td>

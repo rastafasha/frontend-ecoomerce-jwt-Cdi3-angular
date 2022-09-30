@@ -36,7 +36,7 @@ ngOnInit(){
   window.scrollTo(0,0);
 }
 
-  login(){debugger
+  login(){
 
     this.usuarioService.login(this.loginForm.value).subscribe(
       resp =>{
@@ -71,7 +71,7 @@ ngOnInit(){
     this.usuarioService.googleInit();
     this.auth2 = this.usuarioService.auth2;
 
-    // this.attachSignin(document.getElementById('my-signin2'));
+    this.attachSignin(document.getElementById('my-signin2'));
   }
 
   attachSignin(element) {

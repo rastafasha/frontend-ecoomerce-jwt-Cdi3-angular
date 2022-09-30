@@ -5,16 +5,16 @@
         </div>
         <div class="row">
             <div class="row js-product-masonry-layout-3 product-masonry-layout-3">
-                <figure class="item first" *ngFor="let item of productos | slice:0:1">
-                    <div class="product product-style-2 no-border">
+                <figure class="item first" *ngFor="let item of productos ">
+                    <div class="product product-style-2 no-border" *ngIf="item.isFeatured == true">
                         <div class="img-wrapper">
                             <!-- <a [routerLink]="['/producto', producto.id]"> -->
-                            <a (click)="gotoProduct(item.id)">
-                                <img class="img-responsive" src="{{item.img}}" alt="product thumbnail">
+                            <a (click)="gotoProduct(item._id)">
+                                <img class="img-responsive" src="{{imagenSerUrl}}/productos/{{item.img}}" alt="product thumbnail">
                             </a>
                             <div class="product-control-wrapper bottom-right">
                                 <div class="wrapper-control-item">
-                                    <a class="js-quick-view" data-toggle="modal" [attr.data-target]="'#' + item.id">
+                                    <a class="js-quick-view" data-toggle="modal" [attr.data-target]="'#' + item._id">
                                         <span class="lnr lnr-eye"></span>
                                     </a>
                                 </div>
@@ -31,7 +31,7 @@
                             </div>
                             <figcaption class="desc">
                                 <h3>
-                                    <a class="product-name" (click)="gotoProduct(item.id)">{{item.name}}</a>
+                                    <a class="product-name" (click)="gotoProduct(item._id)">{{item.titulo}}</a>
                                     <!-- <a class="product-name" [routerLink]="['/producto', producto.id]">{{item.name}}</a> -->
                                 </h3>
                                 <span class="price">${{item.price}}</span>
@@ -39,16 +39,16 @@
                         </div>
                     </div>
                 </figure>
-                <figure class="item itemgroup" *ngFor="let item of productos | slice:0:4">
+                <!-- <figure class="item itemgroup" *ngFor="let item of productos ">
                     <div class="product product-style-2 no-border">
                         <div class="img-wrapper">
-                            <!-- <a [routerLink]="['/producto', producto.id]"> -->
-                            <a (click)="gotoProduct(item.id)">
-                                <img class="img-responsive" src="{{item.img}}" alt="product thumbnail">
+                            <a [routerLink]="['/producto', producto.id]">
+                            <a (click)="gotoProduct(item._id)">
+                                <img class="img-responsive" src="{{imagenSerUrl}}/productos/{{item.img}}" alt="product thumbnail">
                             </a>
                             <div class="product-control-wrapper bottom-right">
                                 <div class="wrapper-control-item">
-                                    <a class="js-quick-view" data-toggle="modal" [attr.data-target]="'#' + item.id">
+                                    <a class="js-quick-view" data-toggle="modal" [attr.data-target]="'#' + item._id">
                                         <span class="lnr lnr-eye"></span>
                                     </a>
                                 </div>
@@ -65,18 +65,18 @@
                             </div>
                             <figcaption class="desc">
                                 <h3>
-                                    <a class="product-name" (click)="gotoProduct(item.id)">{{item.name}}</a>
-                                    <!-- <a class="product-name" [routerLink]="['/producto', producto.id]">{{item.name}}</a> -->
+                                    <a class="product-name" (click)="gotoProduct(item._id)">{{item.titulo}}</a>
+                                    <a class="product-name" [routerLink]="['/producto', producto.id]">{{item.name}}</a>
                                 </h3>
                                 <span class="price">${{item.price}}</span>
                             </figcaption>
                         </div>
                     </div>
-                </figure>
+                </figure> -->
 
             </div>
         </div>
     </div>
 </section>
 
-<app-modal-producto></app-modal-producto>
+<!-- <app-modal-producto></app-modal-producto> -->

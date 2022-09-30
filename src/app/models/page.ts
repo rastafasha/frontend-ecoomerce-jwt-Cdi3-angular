@@ -1,12 +1,30 @@
+import { environment } from 'src/environments/environment';
+
+const base_url = environment.baseUrl;
 export class Page {
-  id: number;
-  title: string;
-  category_id: number;
-  description: string;
+  _id: string;
+  titulo: string;
+  categoria: string;
+  descripcion: string;
   video_review: string;
-  is_featured: boolean;
-  is_active: boolean;
+  isFeatured: boolean;
+  status: string;
   imgUrl: string;
   img: string;
-  created_at: Date;
+  createdAt: Date;
+
+
+  get imagenUrl(){
+
+    if(!this.img){
+      return `${base_url}/uploads/pages/no-image.jpg`;
+    } else if(this.img.includes('https')){
+      return this.img;
+    } else if(this.img){
+      return `${base_url}/uploads/pages/${this.img}`;
+    }else {
+      return `${base_url}/uploads/pages/no-image.jpg`;
+    }
+
+  }
 }

@@ -14,7 +14,7 @@ import { PageService } from 'src/app/services/page.service';
 })
 export class PageFeaturedComponent implements OnInit {
 
-  public pages: Page;
+  public pages: Page[]=[];
 
   error!: string;
 
@@ -22,7 +22,7 @@ export class PageFeaturedComponent implements OnInit {
 
   private http: HttpClient;
   ServerUrl = environment.baseUrl;
-  // imagenSerUrl = environment.imageUrl;
+  imagenSerUrl = environment.mediaUrl;
 
 
   constructor(
@@ -39,9 +39,9 @@ export class PageFeaturedComponent implements OnInit {
   }
 
   loadPages(){
-    this.pageService.getFeaturedPages().subscribe(
-      resp => {
-        this.pages = resp;
+    this.pageService.getPages().subscribe(
+      pages => {
+        this.pages = pages;
         console.log(this.pages);
       }
     )

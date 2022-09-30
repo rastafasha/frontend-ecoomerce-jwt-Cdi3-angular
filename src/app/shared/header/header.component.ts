@@ -41,7 +41,7 @@ export class HeaderComponent implements OnInit {
     private storageService: StorageService,
     private usuarioService: UsuarioService,
   ) {
-  this.user = usuarioService.user;
+  this.user = usuarioService.usuario;
   }
 
   classie:any;
@@ -79,12 +79,16 @@ export class HeaderComponent implements OnInit {
   }
 
   obtenerUser(){
-    this.usuarioService.get_user(this.user).subscribe(
-      resp=>{
-        this.user = resp;
-        console.log(this.user);
-      }
-    )
+    if(this.user !== undefined){
+      this.usuarioService.get_user(this.user).subscribe(
+        resp=>{
+          this.user = resp;
+          console.log(this.user);
+        }
+      )
+    }else{
+      return;
+    }
   }
 
 
@@ -92,7 +96,7 @@ export class HeaderComponent implements OnInit {
     this.messageService.getMessage().subscribe((product:Producto)=>{
       let exists = false;
       this.cartItems.forEach(item =>{
-        if(item.productId === product.id){
+        if(item.productId === product._id){
           exists = true;
           item.quantity++;
         }

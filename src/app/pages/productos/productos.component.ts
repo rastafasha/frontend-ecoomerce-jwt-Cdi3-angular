@@ -16,18 +16,20 @@ import { MessageService } from 'src/app/services/message.service';
 })
 export class ProductosComponent implements OnInit {
 
-  public productos: Producto;
+  public productos: Producto[]=[];
   public product: Producto;
 
 
   error!: string;
 
+  p: Number = 1;
+  count: Number = 8;
 
   public producto : any = {};
 
   private http: HttpClient;
   ServerUrl = environment.baseUrl;
-  // imagenSerUrl = environment.imageUrl;
+  imagenSerUrl = environment.mediaUrl;
 
   constructor(
     public productoService: ProductoService,
@@ -47,8 +49,8 @@ export class ProductosComponent implements OnInit {
   }
   loadProducts(){
     this.productoService.getProductos().subscribe(
-      resp => {
-        this.productos = resp;
+      productos => {
+        this.productos = productos;
         console.log(this.productos);
       }
     )

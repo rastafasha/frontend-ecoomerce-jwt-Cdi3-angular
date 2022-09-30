@@ -11,7 +11,7 @@ import { ConfiguracionService } from 'src/app/services/configuracion.service';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-  configuraciones: Configuracion;
+  configuraciones: Configuracion[]=[];
   configuracion: Configuracion;
   categories: Category;
 
@@ -36,8 +36,8 @@ export class FooterComponent implements OnInit {
     )
   }
 
-  obtenerConfiguracion(id:number){
-    this.configuracionService.getConfiguracion(1).subscribe(
+  obtenerConfiguracion(_id:string){
+    this.configuracionService.getConfiguracion('5f25bd8015655fee54a89691').subscribe(
       resp=>{
         this.configuracion = resp;
         console.log(this.configuracion);

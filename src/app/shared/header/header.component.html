@@ -62,8 +62,15 @@
                     <li>
                         <a routerLink="/home" routerLinkActive="active">Home</a>
                     </li>
-                    <li *ngFor="let cat of categories ">
-                        <a [routerLink]="['/category', cat.category_name]">{{cat.category_name}}</a>
+                    <!-- <li *ngFor="let cat of categories ">
+                        <a [routerLink]="['/category', cat.nombre]">{{cat.nombre}}</a>
+                    </li> -->
+
+                    <li>
+                        <a routerLink="/cursos" routerLinkActive="active">Cursos</a>
+                    </li>
+                    <li>
+                        <a routerLink="/productos" routerLinkActive="active">Productos</a>
                     </li>
                     <li>
                         <a routerLink="/about" routerLinkActive="active">About</a>

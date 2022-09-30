@@ -10,7 +10,7 @@ import { ConfiguracionService } from 'src/app/services/configuracion.service';
 })
 export class ContactComponent implements OnInit {
 
-  configuraciones: Configuracion;
+  configuraciones: Configuracion[]=[];
   configuracion: Configuracion;
   constructor(
     public configuracionService: ConfiguracionService,
@@ -24,20 +24,22 @@ export class ContactComponent implements OnInit {
   }
 
    obtenerConfiguracions(){
-    return this.configuracionService.getConfiguracions().subscribe(
-      resp=>{
-        this.configuraciones = resp;
+    this.configuracionService.getConfiguracions().subscribe(
+      configuraciones => {
+        this.configuraciones = configuraciones;
         console.log(this.configuraciones);
       }
     )
   }
 
-  obtenerConfiguracion(id:number){
-    this.configuracionService.getConfiguracion(1).subscribe(
+  obtenerConfiguracion(_id:string){
+    this.configuracionService.getConfiguracion('5f25bd8015655fee54a89691').subscribe(
       resp=>{
         this.configuracion = resp;
+        console.log(this.configuracion);
       }
     )
+
   }
 
 }

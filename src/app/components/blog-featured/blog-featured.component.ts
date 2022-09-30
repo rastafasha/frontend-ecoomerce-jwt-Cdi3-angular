@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Blog } from 'src/app/models/blog';
 import { BlogService } from 'src/app/services/blog.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -10,18 +11,21 @@ import { BlogService } from 'src/app/services/blog.service';
 })
 export class BlogFeaturedComponent implements OnInit {
 
-  blogs: Blog;
+  blogs: Blog[]=[];
   error: {};
+  imagenSerUrl = environment.mediaUrl;
 
   constructor(
     private blogService: BlogService
   ) { }
 
   ngOnInit() {
-    this.blogService.getFeaturedBlogs().subscribe(
-      (data: Blog) => this.blogs = data,
-      error => this.error = error
-    );
+    this.blogService.getBlogs().subscribe(
+      blogs => {
+        this.blogs = blogs;
+        console.log(this.blogs);
+      }
+    )
   }
 
 }

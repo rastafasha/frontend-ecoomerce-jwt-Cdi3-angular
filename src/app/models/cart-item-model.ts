@@ -3,7 +3,7 @@ import { Curso } from './curso';
 import { Producto } from './producto';
 export class CartItemModel {
 
-    productId: number;
+    productId: string;
     productCode: string;
     productName: string;
     productPrice:number;
@@ -14,12 +14,11 @@ export class CartItemModel {
     img:string;
 
     constructor(product: Producto){
-      this.productId= product.id;
-      this.productCode= product.cod_prod;
-      this.productName = product.name;
-      this.category_name = product.category_id;
-      this.description = product.description;
-      this.productPrice = product.price;
+      this.productId= product._id;
+      this.productName = product.titulo;
+      this.category_name = product.categoria;
+      this.description = product.detalle;
+      this.productPrice = product.precio_ahora;
       this.img = product.img;
       this.quantity = 1;
     }

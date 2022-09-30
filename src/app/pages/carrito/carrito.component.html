@@ -25,6 +25,7 @@
                             <thead>
                                 <tr>
                                     <th class="product-thumbnail">Product img</th>
+                                    <th class="product-name">Name</th>
                                     <th class="product-quantity">Quantity</th>
                                     <th class="product-price">Price</th>
                                     <th class="product-subtotal">Total</th>
@@ -35,10 +36,13 @@
                             <tbody *ngFor="let item of cartItems; index as i">
                                 <tr>
                                     <td class="product-thumbnail">
-                                        <a class="product-thumbnail" [routerLink]="['/category/cat.category_name/',item.productId]">
-                                            <img src="{{item.img}}" style="height: 60px;" alt="product-thumbnail">
+                                        <a class="product-thumbnail" [routerLink]="['/category/cat.nombre/',item.productId]">
+
+
+                                            <img src="{{imagenSerUrl}}productos/{{item.img}}" style="height: 60px;" alt="product-thumbnail">
                                         </a>
                                     </td>
+                                    <td class="product-name" data-title="Name">{{item.productName }}</td>
                                     <td class="product-quantity" data-title="Quantity">
                                         <input class="qty" step="1" min="0" max="" name="{{item.quantity}}" formControlName="quantity" value="{{item.quantity}}" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric" type="number">
                                     </td>

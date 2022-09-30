@@ -5,6 +5,7 @@ import { MessageService } from 'src/app/services/message.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { Page } from 'src/app/models/page';
 import { PageService } from 'src/app/services/page.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-pages',
@@ -12,6 +13,8 @@ import { PageService } from 'src/app/services/page.service';
   styleUrls: ['./pages.component.css']
 })
 export class PagesComponent implements OnInit {
+
+  imagenSerUrl = environment.mediaUrl;
 
   page: Page;
   categories: Category;
@@ -31,8 +34,8 @@ export class PagesComponent implements OnInit {
     this.obtenerCategorias();
   }
 
-  obtenerPage(id:number){
-    this.pageService.getPage(id).subscribe(
+  obtenerPage(_id:string){
+    this.pageService.getPage(_id).subscribe(
       resp=>{
         this.page = resp;
         console.log(this.page);

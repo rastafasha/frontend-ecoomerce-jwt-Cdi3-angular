@@ -5,9 +5,9 @@
     <div class="shop-detail-3 woocommerce" id="page">
 
         <section class="sub-header shop-detail-1">
-            <img class="rellax bg-overlay" src="{{curso.img}}" alt="{{curso.name}}">
+            <img class="rellax bg-overlay" src="{{imagenSerUrl}}/cursos/{{curso.img}}" alt="{{curso.titulo}}">
             <div class="overlay-call-to-action"></div>
-            <h3 class="heading-style-3" style="color:#ccc">{{curso.name}}</h3>
+            <h3 class="heading-style-3" style="color:#ccc">{{curso.titulo}}</h3>
         </section>
         <section class="boxed-sm">
             <div class="container">
@@ -18,7 +18,7 @@
                                 <div class="woocommerce-product-gallery vertical">
                                     <div class="main-carousel">
                                         <div class="item">
-                                            <img class="img-responsive" src="{{curso.img}}" alt="{{curso.name}} thumbnail">
+                                            <img class="img-responsive" src="{{imagenSerUrl}}/cursos/{{curso.img}}" alt="{{curso.titulo}} thumbnail">
                                         </div>
 
                                     </div>
@@ -28,8 +28,9 @@
                                 <div class="summary">
                                     <div class="desc">
                                         <div class="header-desc">
-                                            <h2 class="product-title">{{curso.name}} </h2>
-                                            <p class="price">${{curso.price}} </p>
+                                            <h2 class="product-title">{{curso.titulo}} </h2>
+                                            <p class="price">${{curso.precio_ahora}} </p>
+                                            <p class="price">${{curso.precio_antes}} </p>
                                         </div>
                                         <div class="body-desc">
                                             <div class="woocommerce-product-details-short-description">
@@ -62,15 +63,18 @@
                                         </div>
                                     </div>
                                     <div class="product-meta">
-                                        <p class="posted-in" *ngFor="let cat of categories | slice:1:2;  index as i ">Category:
+                                        <!-- <p class="posted-in" *ngFor="let cat of categories | slice:1:2;  index as i ">Category:
                                             <a [routerLink]="['/category', cat.category_name]" rel="tag" value="{{curso.category_id}}">{{cat.category_name}} </a>
-                                        </p>
+                                        </p> -->
                                         <!-- <p class="tagged-as" *ngFor="let cat of categories">Tags:
                                         <a href="#" rel="tag">{{cat.category_name}}</a>,
                                     </p> -->
                                         <p class="id">ID:
-                                            <a href="#">{{curso.cod_prod}}</a>
+                                            <!-- <a href="#">{{curso.cod_prod}}</a> -->
                                             <!-- <a href="#">A203</a> -->
+                                        </p>
+                                        <p class="id">Categoria:
+                                            <br> {{curso.categoria}}
                                         </p>
                                     </div>
 
@@ -134,7 +138,7 @@
                         <div class="col-md-8 col-md-offset-2">
                             <div class="tab-content tab-content-style-2">
                                 <div class="tab-pane fade in active" id="Description" role="tabpanel">
-                                    <p>{{curso.description}} </p>
+                                    <p>{{curso.detalle}} </p>
                                 </div>
                                 <div class="tab-pane fade" id="Additional-Information" role="tabpanel">
                                     <iframe src="{{curso.video_review}}" frameborder="0"></iframe>
@@ -143,14 +147,14 @@
                                             <tr>
                                                 <th>Creado </th>
                                                 <td>
-                                                    <p>{{curso.created_at}}</p>
+                                                    <p>{{curso.createdAt}}</p>
                                                 </td>
                                             </tr>
                                             <div *ngIf="curso.updated_at">
                                                 <tr>
                                                     <th>Ultima actualización</th>
                                                     <td>
-                                                        <p>{{curso.updated_at}}</p>
+                                                        <p>{{curso.updatedAt}}</p>
                                                     </td>
                                                 </tr>
                                             </div>
@@ -158,10 +162,10 @@
                                             <tr>
                                                 <th>Artículo Disponible?</th>
                                                 <td>
-                                                    <div *ngIf="curso.is_featured == 1">
+                                                    <div *ngIf="curso.isFeatured == true">
                                                         <p>Si</p>
                                                     </div>
-                                                    <div *ngIf="curso.is_featured == 0">
+                                                    <div *ngIf="curso.isFeatured == false">
                                                         <p>No</p>
                                                     </div>
                                                 </td>

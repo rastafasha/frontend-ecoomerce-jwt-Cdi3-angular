@@ -15,7 +15,8 @@ import { CursoService } from 'src/app/services/curso.service';
 })
 export class CursosComponent implements OnInit {
 
-  public cursos: Curso;
+  public cursos: Curso[] =[];
+  public curso: Curso;
 
 
   error!: string;
@@ -24,7 +25,7 @@ export class CursosComponent implements OnInit {
 
   private http: HttpClient;
   ServerUrl = environment.baseUrl;
-  // imagenSerUrl = environment.imageUrl;
+  imagenSerUrl = environment.mediaUrl;
 
   constructor(
     public cursoService: CursoService,
@@ -45,8 +46,8 @@ export class CursosComponent implements OnInit {
   }
   loadProducts(){
     this.cursoService.getCursos().subscribe(
-      resp => {
-        this.cursos = resp;
+      cursos => {
+        this.cursos = cursos;
         console.log(this.cursos);
       }
     )

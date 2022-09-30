@@ -5,6 +5,8 @@ import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { Category } from '../models/category';
+import { map } from 'rxjs/operators';
+const base_url = environment.baseUrl;
 
 @Injectable({
   providedIn: 'root'
@@ -15,27 +17,42 @@ export class BlogService {
 
   constructor(private http: HttpClient) { }
 
+  get token():string{
+    return localStorage.getItem('token') || '';
+  }
+
+  get headers(){
+    return{
+      headers: {
+        'x-token': this.token
+      }
+    }
+  }
+
   getBlogs() {
-    return this.http.get<Blog>(this.serverUrl + 'api_blog/blogs/').pipe(
-      catchError(this.handleError)
-    );
+    const url = `${base_url}/blogs`;
+    return this.http.get(url, this.headers)
+      .pipe(
+        map((resp:{ok: boolean, blogs: Blog[]}) => resp.blogs)
+      )
   }
 
   getFeaturedBlogs() {
-    return this.http.get<Blog>(this.serverUrl + 'api_blog/featured_blogs/').pipe(
+    return this.http.get<Blog>(this.serverUrl + '/blogs/').pipe(
       catchError(this.handleError)
     );
   }
 
-  getBlog(id: number) {
-    return this.http.get<Blog>(this.serverUrl + 'api_blog/blog/' + id)
-    .pipe(
-      catchError(this.handleError)
-    );
+  getBlog(_id: string) {
+    const url = `${base_url}/blogs/${_id}`;
+    return this.http.get(url, this.headers)
+      .pipe(
+        map((resp:{ok: boolean, blog: Blog}) => resp.blog)
+        );
   }
 
   getRecentBlogs() {
-    return this.http.get<Blog>(this.serverUrl + 'api_blog/recent_blogs/').pipe(
+    return this.http.get<Blog>(this.serverUrl + '/blogs/').pipe(
       catchError(this.handleError)
     );
   }

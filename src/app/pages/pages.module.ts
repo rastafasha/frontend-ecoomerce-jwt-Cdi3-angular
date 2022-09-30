@@ -41,10 +41,11 @@ import { SidebarService } from '../services/sidebar.service';
 import { SliderService } from '../services/slider.service';
 import { StorageService } from '../services/storage.service';
 import { PageService } from '../services/page.service';
+import { PipesModule } from '../pipes/pipes.module';
 
 
 // paginacion
-// import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { PageService } from '../services/page.service';
     BlogListComponent,
     BlogDetailComponent,
     PrivacypolicyComponent,
-    CartCheckoutComponent
+    CartCheckoutComponent,
+
   ],
   exports: [
     ContactComponent,
@@ -89,7 +91,10 @@ import { PageService } from '../services/page.service';
     NgbModule,
     CmspageModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule,
+    // PipesModule,
+
   ],
   providers: [
     // httpInterceptorProviders,

@@ -5,44 +5,60 @@ import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { Params, Router } from '@angular/router';
 import { Producto } from '../models/producto';
+import { map } from 'rxjs/operators';
 
+const base_url = environment.baseUrl;
 @Injectable({
   providedIn: 'root'
 })
 export class ProductoService {
 
-  public datosvictima: string;
 
   public serverUrl: string;
   public media: string;
   public identity;
-  public token;
 
 
   constructor(private http: HttpClient, public router: Router) {
     this.serverUrl = environment.baseUrl;
-    this.media = environment.mediaUrl;
+  }
+
+  get token():string{
+    return localStorage.getItem('token') || '';
+  }
+
+
+  get headers(){
+    return{
+      headers: {
+        'x-token': this.token
+      }
+    }
   }
 
   getProductos() {
-    return this.http.get<Producto>(this.serverUrl + 'api_producto/productos/').pipe(
-      catchError(this.handleError)
-    );
+    const url = `${base_url}/productos`;
+    return this.http.get(url, this.headers)
+      .pipe(
+        map((resp:{ok: boolean, productos: Producto[]}) => resp.productos)
+      )
   }
 
-  getProducto(cod_prod: string) {
-    return this.http.get<Producto>(this.serverUrl + 'api_producto/producto/' + cod_prod).pipe(
-      catchError(this.handleError)
-    );
+  getProducto(_id: string) {
+    const url = `${base_url}/productos/${_id}`;
+    return this.http.get(url, this.headers)
+      .pipe(
+        map((resp:{ok: boolean, producto: Producto}) => resp.producto)
+        );
   }
 
   getFeaturedProductos() {
-    return this.http.get<Producto>(this.serverUrl + 'api_producto/productos/').pipe(
+    return this.http.get<Producto>(this.serverUrl + '/productos/').pipe(
       catchError(this.handleError)
     );
   }
 getRecentProductos() {
-  return this.http.get<Producto>(this.serverUrl + 'api_producto/productos/').pipe(
+  return this.http.get<Producto>(this.serverUrl + '/productos/').pipe(
     catchError(this.handleError)
   );
 }

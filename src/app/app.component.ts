@@ -13,7 +13,7 @@ import { UsuarioService } from './services/usuario.service';
 })
 export class AppComponent implements OnInit {
 
-  configuraciones: Configuracion;
+  configuraciones: Configuracion[]=[];
   configuracion: Configuracion;
 user: Usuario;
  error: {};
@@ -25,7 +25,7 @@ constructor(
   private usuarioService: UsuarioService,
   public activatedRoute: ActivatedRoute,
 ){
-  this.user = usuarioService.user;
+  this.user = usuarioService.usuario;
 }
 
   ngOnInit() {
@@ -44,8 +44,8 @@ constructor(
     )
   }
 
-  obtenerConfiguracion(id:number){
-    this.configuracionService.getConfiguracion(1).subscribe(
+  obtenerConfiguracion(_id:string){
+    this.configuracionService.getConfiguracion('5f25bd8015655fee54a89691').subscribe(
       resp=>{
         this.configuracion = resp;
         console.log(this.configuracion);
@@ -53,9 +53,9 @@ constructor(
     )
   }
 
-  obtenerUser(id:number){
-    if(id !== null && id !== undefined){
-    this.usuarioService.get_user(this.user.id).subscribe(
+  obtenerUser(_id:string){
+    if(_id !== null && _id !== undefined){
+    this.usuarioService.get_user(this.user.uid).subscribe(
       resp=>{
         this.user = resp;
         console.log(this.user);

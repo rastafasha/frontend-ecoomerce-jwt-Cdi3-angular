@@ -24,28 +24,27 @@ export class SliderService {
 
   constructor(private http: HttpClient, public router: Router) {
     this.serverUrl = environment.baseUrl;
-    this.media = environment.mediaUrl;
   }
 
   getSliders() {
-    return this.http.get<Slider>(this.serverUrl + 'api_slider/sliders/').pipe(
+    return this.http.get<Slider>(this.serverUrl + '/sliders/').pipe(
       catchError(this.handleError)
     );
   }
 
-  getSlider(id: number) {
-    return this.http.get<Slider>(this.serverUrl + 'api_slider/slider/' + id).pipe(
+  getSlider(_id: string) {
+    return this.http.get<Slider>(this.serverUrl + '/sliders/' + _id).pipe(
       catchError(this.handleError)
     );
   }
 
   getFeaturedSliders() {
-    return this.http.get<Slider>(this.serverUrl + 'api_slider/featured_sliders/').pipe(
+    return this.http.get<Slider>(this.serverUrl + '/sliders/').pipe(
       catchError(this.handleError)
     );
   }
 getRecentSliders() {
-  return this.http.get<Slider>(this.serverUrl + 'api_slider/recent_sliders/').pipe(
+  return this.http.get<Slider>(this.serverUrl + '/sliders/').pipe(
     catchError(this.handleError)
   );
 }

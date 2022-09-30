@@ -19,7 +19,7 @@ export class PageComponent implements OnInit {
     private usuarioService: UsuarioService,
     public activatedRoute: ActivatedRoute,
   ) {
-    this.user = usuarioService.user;
+    this.user = usuarioService.usuario;
   }
 
   ngOnInit(): void {

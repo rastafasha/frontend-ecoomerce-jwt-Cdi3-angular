@@ -5,16 +5,17 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SlidertopComponent } from './slidertop/slidertop.component';
-import { ModalProductoComponent } from './modal-producto/modal-producto.component';
-import { FormsModule } from '@angular/forms';
-import { ModalCursosComponent } from './modal-cursos/modal-cursos.component';
+// import { ModalProductoComponent } from './modal-producto/modal-producto.component';
+// import { ModalCursosComponent } from './modal-cursos/modal-cursos.component';
 // import { CategoriaService } from '../services/categoria.service';
 
 //pluggins
+import { FormsModule } from '@angular/forms';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalGalleryComponent } from './modal-gallery/modal-gallery.component';
 import { ModalPagoComponent } from '../components/modal-pago/modal-pago.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 // import { NgxSpinnerModule } from "ngx-spinner";
@@ -24,8 +25,6 @@ import { ModalPagoComponent } from '../components/modal-pago/modal-pago.componen
     HeaderComponent,
     FooterComponent,
     SlidertopComponent,
-    ModalProductoComponent,
-    ModalCursosComponent,
     ModalGalleryComponent,
     ModalPagoComponent
   ],
@@ -33,8 +32,6 @@ import { ModalPagoComponent } from '../components/modal-pago/modal-pago.componen
     HeaderComponent,
     FooterComponent,
     SlidertopComponent,
-    ModalProductoComponent,
-    ModalCursosComponent,
     ModalGalleryComponent,
     ModalPagoComponent
   ],
@@ -43,7 +40,8 @@ import { ModalPagoComponent } from '../components/modal-pago/modal-pago.componen
     RouterModule,
     FormsModule,
     NgxPayPalModule,
-    NgbModule
+    NgbModule,
+    AppRoutingModule,
   ]
 })
 export class SharedModule { }

@@ -33,16 +33,17 @@
                     <figure class="item" *ngFor="let curso of cursos">
                         <div class="product product-style-1">
                             <div class="img-wrapper">
-                                <a [routerLink]="['/category/cursos/', curso.cod_prod]">
-                                    <img class="img-responsive" src="{{curso.img}}" alt="product thumbnail" />
+                                <a [routerLink]="['/cursos/', curso._id]">
+                                    <img class="img-responsive" src="{{imagenSerUrl}}/cursos/{{curso.img}}" alt="product thumbnail" />
+                                    <!-- <img class="img-responsive" [src]="curso.img | imagenPipe: 'cursos'" alt="product thumbnail" /> -->
                                 </a>
                                 <div class="product-control-wrapper bottom-right">
-                                    <div class="wrapper-control-item">
-                                        <a class="js-quick-view" data-toggle="modal" [attr.data-target]="'#' + curso.cod_prod">
-                                            <!-- <a class="js-quick-view" href="#" type="button" data-toggle="modal" data-target="#quick-view-product"> -->
+                                    <!-- <div class="wrapper-control-item">
+                                        <a class="js-quick-view" data-toggle="modal" [attr.data-target]="'#' + curso.id">
+                                            <a class="js-quick-view" href="#" type="button" data-toggle="modal" data-target="#quick-view-product">
                                             <span class="lnr lnr-eye"></span>
                                         </a>
-                                    </div>
+                                    </div> -->
                                     <div class="wrapper-control-item item-wish-list">
                                         <a class="js-wish-list js-notify-add-wish-list" href="#">
                                             <span class="lnr lnr-heart"></span>
@@ -57,9 +58,10 @@
                             </div>
                             <figcaption class="desc text-center">
                                 <h3>
-                                    <a class="product-name" [routerLink]="['/category/cursos/', curso.cod_prod]">{{curso.name}}</a>
+                                    <a class="product-name" [routerLink]="['/cursos/', curso._id]">{{curso.titulo}}</a>
                                 </h3>
-                                <span class="price">${{curso.price}}</span>
+                                <span class="price">${{curso.precio_ahora}}</span>
+                                <span class="price">${{curso.precio_antes}}</span>
                             </figcaption>
                         </div>
                     </figure>
@@ -96,4 +98,3 @@
         </div>
     </section>
 </div>
-<app-modal-cursos></app-modal-cursos>

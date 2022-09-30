@@ -5,43 +5,61 @@ import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { Params, Router } from '@angular/router';
 import { Curso } from '../models/curso';
+import { map } from 'rxjs/operators';
+
+const base_url = environment.baseUrl;
 
 @Injectable({
   providedIn: 'root'
 })
 export class CursoService {
 
-
+  public curso: Curso;
   public serverUrl: string;
   public media: string;
   public identity;
-  public token;
 
 
   constructor(private http: HttpClient, public router: Router) {
     this.serverUrl = environment.baseUrl;
-    this.media = environment.mediaUrl;
+  }
+
+  get token():string{
+    return localStorage.getItem('token') || '';
+  }
+
+
+  get headers(){
+    return{
+      headers: {
+        'x-token': this.token
+      }
+    }
   }
 
   getCursos() {
-    return this.http.get<Curso>(this.serverUrl + 'api_curso/cursos/').pipe(
-      catchError(this.handleError)
-    );
+    const url = `${base_url}/cursos`;
+    return this.http.get(url, this.headers)
+      .pipe(
+        map((resp:{ok: boolean, cursos: Curso[]}) => resp.cursos)
+      )
   }
 
-  getCurso(cod_prod: string) {
-    return this.http.get<Curso>(this.serverUrl + 'api_curso/curso/' + cod_prod).pipe(
-      catchError(this.handleError)
-    );
+  getCurso(_id: string) {
+    const url = `${base_url}/cursos/${_id}`;
+    return this.http.get(url, this.headers)
+      .pipe(
+        map((resp:{ok: boolean, curso: Curso}) => resp.curso)
+        );
   }
 
   getFeaturedCursos() {
-    return this.http.get<Curso>(this.serverUrl + 'api_curso/featured_cursos/').pipe(
+    return this.http.get<Curso>(this.serverUrl + '/cursos/').pipe(
       catchError(this.handleError)
     );
   }
 getRecentCursos() {
-  return this.http.get<Curso>(this.serverUrl + 'api_curso/recent_cursos/').pipe(
+  return this.http.get<Curso>(this.serverUrl + '/cursos/').pipe(
     catchError(this.handleError)
   );
 }

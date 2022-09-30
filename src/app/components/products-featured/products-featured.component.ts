@@ -13,7 +13,7 @@ import { ProductoService } from 'src/app/services/producto.service';
 })
 export class ProductsFeaturedComponent implements OnInit {
 
-  public productos: Producto;
+  public productos: Producto[]=[];
 
 
   error!: string;
@@ -23,7 +23,7 @@ export class ProductsFeaturedComponent implements OnInit {
 
   private http: HttpClient;
   ServerUrl = environment.baseUrl;
-  // imagenSerUrl = environment.imageUrl;
+  imagenSerUrl = environment.mediaUrl;
 
   constructor(
     public productoService: ProductoService,
@@ -40,9 +40,9 @@ export class ProductsFeaturedComponent implements OnInit {
 
   }
   loadProducts(){
-    this.productoService.getFeaturedProductos().subscribe(
-      resp => {
-        this.productos = resp;
+    this.productoService.getProductos().subscribe(
+      productos => {
+        this.productos = productos;
         console.log(this.productos);
       }
     )

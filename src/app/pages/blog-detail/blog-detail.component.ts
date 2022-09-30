@@ -7,6 +7,7 @@ import { CategoryService } from 'src/app/services/category.service';
 import { MessageService } from 'src/app/services/message.service';
 import { Configuracion } from 'src/app/models/configuracion';
 import { ConfiguracionService } from 'src/app/services/configuracion.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -16,12 +17,15 @@ import { ConfiguracionService } from 'src/app/services/configuracion.service';
 })
 export class BlogDetailComponent implements OnInit {
 
+  imagenSerUrl = environment.mediaUrl;
+
   blog: Blog;
   blogrecientes: Blog;
   categories: Category;
 
   configuraciones: Configuracion;
   configuracion: Configuracion;
+
 
   constructor(
     public blogService: BlogService,
@@ -41,8 +45,8 @@ export class BlogDetailComponent implements OnInit {
     window.scrollTo(0,0);
   }
 
-  obtenerBlog(id:number){
-    this.blogService.getBlog(id).subscribe(
+  obtenerBlog(_id:string){
+    this.blogService.getBlog(_id).subscribe(
       resp=>{
         this.blog = resp;
         console.log(this.blog);

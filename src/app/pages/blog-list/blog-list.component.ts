@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Blog } from 'src/app/models/blog';
 import { BlogService } from 'src/app/services/blog.service';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -11,19 +12,21 @@ import { BlogService } from 'src/app/services/blog.service';
 })
 export class BlogListComponent implements OnInit {
 
-  blogs: Blog;
+  blogs: Blog[]=[];
   error: {};
+  imagenSerUrl = environment.mediaUrl;
 
   constructor(
     private blogService: BlogService
   ) { }
 
   ngOnInit() {
-    window.scrollTo(0,0);
     this.blogService.getBlogs().subscribe(
-      (data: Blog) => this.blogs = data,
-      error => this.error = error
-    );
+      blogs => {
+        this.blogs = blogs;
+        console.log(this.blogs);
+      }
+    )
   }
 
 

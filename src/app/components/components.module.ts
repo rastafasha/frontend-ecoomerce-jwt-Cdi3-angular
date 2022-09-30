@@ -39,7 +39,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   imports: [
     CommonModule,
-    PipesModule,
+    // PipesModule,
     SharedModule,
     RouterModule,
     NgxPayPalModule,

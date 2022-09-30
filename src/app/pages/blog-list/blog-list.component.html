@@ -10,13 +10,13 @@
                 <div class="row js-post-masonry-3-columns-wrapper pinterest-layout-post pinterest-3-cols">
                     <div class="post" *ngFor="let blog of blogs ">
                         <div class="img-wrapper">
-                            <a [routerLink]="['/blog', blog.id]">
-                                <img src="{{blog.img}}" alt="blog-thumb" />
+                            <a [routerLink]="['/blog', blog._id]">
+                                <img src="{{imagenSerUrl}}/blogs/{{blog.img}}" alt="blog-thumb {{blog.titulo}}" />
                             </a>
                         </div>
                         <div class="desc">
                             <h4>
-                                <a [routerLink]="['/blog', blog.id]">{{blog.title}}</a>
+                                <a [routerLink]="['/blog', blog._id]">{{blog.titulo}}</a>
                             </h4>
                             <p class="meta">
                                 <span class="time">{{blog.created_at | date:'mediumDate'}}</span>

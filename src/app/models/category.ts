@@ -1,7 +1,7 @@
 export class Category {
-  id: number;
-  category_name: string;
+  nombre: string;
   created_at: Date;
   updated_at: Date;
+  subcategorias?: string;
   _id?: string;
 }

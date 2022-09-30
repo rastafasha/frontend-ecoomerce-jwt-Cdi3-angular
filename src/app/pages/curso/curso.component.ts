@@ -7,6 +7,7 @@ import { MessageService } from 'src/app/services/message.service';
 import { CursoService } from 'src/app/services/curso.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { ConfiguracionService } from '../../services/configuracion.service';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-curso',
   templateUrl: './curso.component.html',
@@ -16,6 +17,9 @@ export class CursoComponent implements OnInit {
 
   curso: Curso;
   categories: Category;
+  imagenSerUrl = environment.mediaUrl;
+
+  _id:string;
 
   constructor(
     public cursoService: CursoService,
@@ -30,12 +34,12 @@ export class CursoComponent implements OnInit {
   ngOnInit(): void {
 
     window.scrollTo(0,0);
-    this.activatedRoute.params.subscribe( ({cod_prod}) => this.obtenerCurso(cod_prod));
+    this.activatedRoute.params.subscribe( ({id}) => this.obtenerCurso(id));
     this.obtenerCategorias();
   }
 
-  obtenerCurso(cod_prod:string){
-    this.cursoService.getCurso(cod_prod).subscribe(
+  obtenerCurso(_id:string){
+    this.cursoService.getCurso(_id).subscribe(
       resp=>{
         this.curso = resp;
         console.log(this.curso);

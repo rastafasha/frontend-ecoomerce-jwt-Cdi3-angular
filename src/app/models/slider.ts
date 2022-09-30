@@ -1,6 +1,6 @@
 import { environment } from "src/environments/environment";
 
-const base_url = environment.mediaUrl;
+const base_url = environment.baseUrl;
 export class Slider {
   constructor(
     public title: string,
@@ -15,7 +15,6 @@ export class Slider {
     public img: string,
     public updated_at: Date,
     public created_at: Date,
-    public id?: number,
     public _id?: string,
 
     ){}
@@ -23,13 +22,13 @@ export class Slider {
   get imagenUrl(){
 
     if(!this.img){
-      return `${base_url}uploads/sliders/no-image.jpg`;
+      return `${base_url}/uploads/sliders/no-image.jpg`;
     } else if(this.img.includes('https')){
       return this.img;
     } else if(this.img){
-      return `${base_url}uploads/sliders/${this.img}`;
+      return `${base_url}/uploads/sliders/${this.img}`;
     }else {
-      return `${base_url}uploads/sliders/no-image.jpg`;
+      return `${base_url}/uploads/sliders/no-image.jpg`;
     }
 
   }

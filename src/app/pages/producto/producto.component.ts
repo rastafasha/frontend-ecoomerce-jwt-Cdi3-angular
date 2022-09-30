@@ -7,6 +7,7 @@ import { MessageService } from 'src/app/services/message.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { ProductoService } from 'src/app/services/producto.service';
 import { ConfiguracionService } from 'src/app/services/configuracion.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class ProductoComponent implements OnInit {
 
   producto: Producto;
   categories: Category;
+  imagenSerUrl = environment.mediaUrl;
 
   constructor(
     public productoService: ProductoService,
@@ -30,13 +32,13 @@ export class ProductoComponent implements OnInit {
   ngOnInit(): void {
 
     window.scrollTo(0,0);
-    this.activatedRoute.params.subscribe( ({cod_prod}) => this.obtenerProducto(cod_prod));
+    this.activatedRoute.params.subscribe( ({id}) => this.obtenerProducto(id));
     this.obtenerCategorias();
 
   }
 
-  obtenerProducto(cod_prod:string){
-    this.productoService.getProducto(cod_prod).subscribe(
+  obtenerProducto(_id:string){
+    this.productoService.getProducto(_id).subscribe(
       resp=>{
         this.producto = resp;
         console.log(this.producto);

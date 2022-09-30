@@ -1,13 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
+import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 
-//editor
-import { CKEditorModule } from 'ckeditor4-angular';
+import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
 
 
 // modulos
@@ -16,12 +13,17 @@ import {PipesModule} from './pipes/pipes.module'
 import {PagesModule} from './pages/pages.module'
 import { SharedModule } from './shared/shared.module';
 import {ComponentsModule} from './components/components.module';
-import {CmspageModule} from './cmspage/cmspage.module';
 import {AuthModule} from './auth/auth.module';
 
 import { NotfoundComponent } from './notfound/notfound.component';
 
 
+
+// Translation
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+import {HttpClientModule, HttpClient} from '@angular/common/http';
 
 
 
@@ -29,26 +31,53 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+//editor
+import { CKEditorModule } from 'ckeditor4-angular';
+import { ImagenPipe } from './pipes/imagen-pipe.pipe';
+import { EscapeHtmlPipe } from './pipes/keep-html.pipe';
+import { KeysPipe } from './pipes/keys.pipe';
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    EscapeHtmlPipe,
+    KeysPipe,
+    ImagenPipe
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     HttpClientModule,
     RouterModule,
     OrderModule,
     CKEditorModule,
     ComponentsModule,
-    PipesModule,
+    // PipesModule,
     PagesModule,
     SharedModule,
     NgbModule,
     NgxPayPalModule,
     AuthModule,
+    // TranslateModule.forRoot({
+    //   defaultLanguage: 'es',
+    //   loader: {
+    //     provide: TranslateLoader,
+    //     useFactory: (http: HttpClient) => {
+    //       return new TranslateHttpLoader(http);
+    //     },
+    //     deps: [ HttpClient ]
+    //   }
+    // })
 
+  ],
+
+  exports:[
+    EscapeHtmlPipe,
+    KeysPipe,
+    ImagenPipe
   ],
 
 
